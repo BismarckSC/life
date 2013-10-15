@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>Eventos Life - Triagem de fotos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Dark Horses" />
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style1.css" />
+		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/reset.css" media="screen" />
+		<link rel="stylesheet" href="css/style.css" media="screen" />
+		<link rel="stylesheet" href="css/css3_3d.css" media="screen" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+
+		<script>
+			if (!Modernizr.csstransforms) {
+				$(document).ready(function(){
+					$(".close").text("Back to top");
+				});
+			}
+		</script>
+    </head>
+    <body>
+    	<div class="codrops-top">
+            <a href="">
+                <strong>Inicio</strong>
+            </a>
+            <span class="right">
+            	Seja Bem Vindo <strong>NOME</strong>! <a href="">(sair)</a>
+            </span>
+            <div class="clr"></div>
+        </div>
+        
+    	<div id="container">
+    		<font size="12">Pasta: Festa</font>
+    		<br>
+    		Pagina 1 de 15
+    	</div>
+    	
+		<div id="container">
+			<ul id="grid" class="group">
+				<li>
+		            <div class="details">
+		            	<h3>Imagem01</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem1"><img src="images/1.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem02</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem2"><img src="images/2.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem03</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem3"><img src="images/3.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem04</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem4"><img src="images/4.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem05</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem5"><img src="images/5.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem06</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem6"><img src="images/6.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem07</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem7"><img src="images/7.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem08</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem8"><img src="images/8.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem09</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem9"><img src="images/9.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem10</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem10"><img src="images/10.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem11</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem11"><img src="images/11.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem12</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem12"><img src="images/12.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem13</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem13"><img src="images/13.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem14</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem14"><img src="images/14.jpg" width="290px"/></a>
+		        </li>
+		        <li>
+		            <div class="details">
+		            	<h3>Imagem15</h3>
+		                <a class="more" href="">marcar</a>
+		            </div>
+		           <a class="more" href="#imagem15"><img src="images/15.jpg" width="290px"/></a>
+		        </li>
+			</ul>
+			
+			<ul id="information">
+				<li id="imagem1">
+            	<div>
+               		<img src="images/1.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem2">
+            	<div>
+               		<img src="images/2.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem3">
+            	<div>
+               		<img src="images/3.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem4">
+            	<div>
+               		<img src="images/4.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem5">
+            	<div>
+               		<img src="images/5.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem6">
+            	<div>
+               		<img src="images/6.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem7">
+            	<div>
+               		<img src="images/7.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem8">
+            	<div>
+               		<img src="images/8.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem9">
+            	<div>
+               		<img src="images/9.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem10">
+            	<div>
+               		<img src="images/10.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem11">
+            	<div>
+               		<img src="images/11.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem12">
+            	<div>
+               		<img src="images/12.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem13">
+            	<div>
+               		<img src="images/13.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem14">
+            	<div>
+               		<img src="images/14.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+				<li id="imagem15">
+            	<div>
+               		<img src="images/15.jpg" />
+                    <a href="#" class="close">x</a>
+            	</div>
+				<span class="backface"></span>
+            </li>
+			</ul>
+		</div>
+		<div class="container span4 offset4">
+			<button type="button" class="btn-primary btn-large" onclick="" id="">Anterior</button>
+			<button type="button" class="btn-primary btn-large" onclick="" id="">Próxima</button>
+		</div>
+    </body>
+</html>
