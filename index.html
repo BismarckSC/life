@@ -39,18 +39,49 @@
             </a>
             <div class="clr"></div>
         </div>
+
+        <br>
+
+        <div class="container">
+            <h1 id="logo">
+            <a href="index.html">
+            <img src="images/life_logo.png"/>
+            </a>
+            </h1>
+        </div>
+
+        <div class="container">
+                <br>
+                <strong><font face="Verdana" color="white" size=5>Sistema de Triagem de Fotos</font></strong>
+                <br>
+                <br>
+        </div>
         
         <!-- Área de Login -->
-        <div class="container span2 offset5">
-            <header>
+        <div class="container">
+            <!--<div class="row"> -->
+                <!--<div class="span12"> -->
+            <!--<header> -->
             	<form action="app/auth.php" name="form_login" method="post">
-		        	<fieldset>
-						 <label><font color="gray" size=6>Email</font></label><input id="email" name="email" type="text" />
-						 <label><font color="gray" size=6>Senha</font></label><input id="senha" name="senha" type="password" /></br>
-						 <button align="right" type="submit" class="btn-primary btn-large" onclick="" id="btnlogin">Entrar</button>
-					</fieldset>
-				</form>              
-            </header>
+                    <div class="control-group">
+		        	<!--<fieldset> -->
+						 <label class="control-label" for="email"><em><font face="Arial" color="white" size=4>Email</font></em></label>
+                         <div class="controls">
+                         <input id="email" name="email" type="text" placeholder="Digite seu email"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+						 <label class="control-label" for="senha"><em><font face="Arial" color="white" size=4>Senha</font></em></label>
+                         <div class="controls">
+                         <input id="senha" name="senha" type="password" placeholder="Digite sua senha" /></br>
+                        </div>
+                    </div>
+						 <button type="submit" class="btn" onclick="" id="btnlogin">Entrar</button>
+					<!--</fieldset> -->
+				</form>    
+                <!--</div> -->
+                <!--</div> -->
+            <!--</header> -->
         </div>
     </body>
 </html>
