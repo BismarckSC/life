@@ -33,6 +33,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/reset.css" media="screen" />
 		<link rel="stylesheet" href="css/style.css" media="screen" />
+		<link rel="stylesheet" href="css/css3_3d.css" media="screen" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/modernizr.js"></script>
 
@@ -56,13 +57,14 @@
         </div>
         
         <div id="container">
-    		<font size="12">Criação de Pastas</font>
+        	<h2 class="title">Eventos Life <span><br>Sistema de Triagem de Fotos<br> Criação dos álbuns</span></h2>
+        
     	</div>
         
         </br></br>
         
         <div id="container">
-    		<p>Pastas:</p>
+    		<label>Pastas:</label>
 <?php
 	$qtde = $con->qtde();
 	if($qtde > 0) {

@@ -61,7 +61,8 @@
         </div>
         
     	<div id="container">
-    		<font size="12">Pasta: <?php echo $album; ?></font>
+    		<h2 class="title">Eventos Life <span>Sistema de Triagem de Fotos</span></h2>
+    		<h2 class="title"><span>Pasta: <?php echo $album; ?></span></h2>
     		<br>
     		Pagina 1 de 15
     	</div>
@@ -78,7 +79,7 @@
 		            	<h3><?php echo $rst['nome']; ?></h3>
 		                <a class="more" href="">marcar</a>
 		            </div>
-		           <a class="more" href="#imagem<?php echo $i; ?>"><img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="290px"/></a>
+		           <a class="more" href="#imagem<?php echo $i; ?>"><img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="200px"/></a>
 		        </li>
 <?php
 	}
@@ -104,8 +105,8 @@
 			</ul>
 		</div>
 		<div class="container span4 offset4">
-			<button type="button" class="btn-primary btn-large" onclick="" id="">Anterior</button>
-			<button type="button" class="btn-primary btn-large" onclick="" id="">Próxima</button>
+			<button type="button" class="btn" onclick="" id="">Anterior</button>
+			<button type="button" class="btn" onclick="" id="">Próxima</button>
 		</div>
     </body>
 </html>

@@ -61,11 +61,10 @@
         </div>
         
         <div id="container">
-    		<br>
-    		<font size="8"><?php echo $rst["evento"]; ?></font>
-    		<br>
-    		<br>
-    		<?php echo $rst["descricao"]; ?>
+        	<h2 class="title">Eventos Life <span>Sistema de Triagem de Fotos</span></h2>
+    		<h2 class="title"><span>Evento: <?php echo $rst["evento"]; ?></span></h2>
+    		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
+    		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
     	</div>
 
     	<div id="container">
@@ -89,7 +88,7 @@
 		            <div class="details">
 		            	<h3><?php echo $rst["nome"]; ?></h3>
 		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
+		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="145px"/></a>
 		        </li>
 <?php
 	}
@@ -105,8 +104,8 @@
     	</div>
 
 		<div class="container span4 offset4">
-			<button type="button" class="btn-primary btn-large" onclick="" id="">Efetuar Triagem</button>
-			<button type="button" class="btn-primary btn-large" onclick="" id="">Finalizar Triagem</button>
+			<button type="button" class="btn" onclick="" id="">Efetuar Triagem</button>
+			<button type="button" class="btn" onclick="" id="">Finalizar Triagem</button>
 		</div>
     </body>
 </html>
