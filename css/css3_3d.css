@@ -4,8 +4,8 @@ accessible in older, less capable browsers.
 Inspired by http://playground.deaxon.com/css/lightbox by http://twitter.com/deaxon 
 ---------------------------------------------------------------------------------------------------------------------------- */
 
-h2.title { font-size: 68px; letter-spacing: -3px; font-weight: bold; text-align: center; margin-top: 35px; text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); }
-h2.title span { font-size: 38px; line-height: 48px; display: block; letter-spacing: -2px; color: rgba(51, 51, 51, 0.5); }
+h2.title { font-size: 68px; letter-spacing: -3px; font-weight: bold; text-align: center; margin-top: -10px; text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); }
+h2.title span { font-size: 32px; line-height: 48px; display: block; letter-spacing: -2px; color: rgba(51, 51, 51, 0.5); }
 
 /* -------------------------------------------------------------------------------------------------------------------------
 Grid of images
@@ -55,7 +55,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-
+/* DEFAULT DETAILS*/
 #grid .details { position: absolute; bottom: 0; background: #fff; background: rgba(255, 255, 255, 0.87); border-top: 1px solid #fff; width: 270px; border-bottom: 1px solid rgba(0, 0, 0, 0.25); padding: 10px;
 	-webkit-border-radius:  0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
@@ -76,6 +76,50 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 }
 
 #grid .details a.more:hover { background-color: #0090e2; color: #fff; }
+
+/* TRIAGEM FINALIZADA DETAILS*/
+#grid .details1 { position: absolute; bottom: 0; background: #fff; background: rgba(0, 220, 95, 0.87); border-top: 1px solid #fff; width: 270px; border-bottom: 1px solid rgba(0, 0, 0, 0.25); padding: 10px;
+	-webkit-border-radius:  0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	-webkit-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+}
+#grid .details1 h3 { margin-bottom: 0px; letter-spacing: -1px; }
+#grid .details1 a.more { position: absolute; right: 10px; top: 5px; font-size: 12px; padding: 6px 10px; background-color: rgba(255, 255, 255, 0.70);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 15px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	-webkit-transition: all 0.15s ease-in;
+}
+
+#grid .details1 a.more:hover { background-color: #0090e2; color: #fff; }
+
+/* TRIAGEM PENDENTE DETAILS*/
+#grid .details2 { position: absolute; bottom: 0; background: #fff; background: rgba(255, 240, 83, 0.87); border-top: 1px solid #fff; width: 270px; border-bottom: 1px solid rgba(0, 0, 0, 0.25); padding: 10px;
+	-webkit-border-radius:  0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	-webkit-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
+}
+#grid .details2 h3 { margin-bottom: 0px; letter-spacing: -1px; }
+#grid .details2 a.more { position: absolute; right: 10px; top: 5px; font-size: 12px; padding: 6px 10px; background-color: rgba(255, 255, 255, 0.70);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 15px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
+	-webkit-transition: all 0.15s ease-in;
+}
+
+#grid .details2 a.more:hover { background-color: #0090e2; color: #fff; }
 
 
 #information { z-index: 20; }

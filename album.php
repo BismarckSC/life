@@ -23,7 +23,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Eventos Life - Triagem de fotos</title>
+        <title>Life - Triagem de fotos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -55,13 +55,19 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo <strong><?php echo $nome; ?></strong>! <a href="">(sair)</a>
+            	Seja Bem Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">(sair)</a>
             </span>
             <div class="clr"></div>
         </div>
         
-    	<div id="container">
-    		<h2 class="title">Eventos Life <span>Sistema de Triagem de Fotos</span></h2>
+    	<div class="container">
+            <h1 id="logo">
+            <img src="images/life_logo.png"/>
+            </h1>
+        </div>
+
+        <div id="container">
+            <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
     		<h2 class="title"><span>Pasta: <?php echo $album; ?></span></h2>
     		<br>
     		Pagina 1 de 15

@@ -20,7 +20,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Eventos Life - Triagem de fotos (Admin)</title>
+        <title>Life - Triagem de fotos (Administrador)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -51,13 +51,19 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo <strong>ADMISTRADOR</strong>! <a href="">(sair)</a>
+            	Seja Bem Vindo <strong>ADMINISTRADOR</strong>! <a href="">(sair)</a>
             </span>
             <div class="clr"></div>
         </div>
         
+        <div class="container">
+        	<h1 id="logo">
+            <img src="images/life_logo.png"/>
+            </h1>
+        </div>
+
         <div id="container">
-        	<h2 class="title">Eventos Life <span><br>Sistema de Triagem de Fotos<br> Criação dos álbuns</span></h2>
+        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Criar pastas</span></h2>
         
     	</div>
         
