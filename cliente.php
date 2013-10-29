@@ -70,14 +70,14 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>Evento: <?php echo $rst["evento"]; ?></span></h2>
+    		<h2 class="title"><span>- Evento: <?php echo $rst["evento"]; ?> -</span></h2>
     		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
     		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
     	</div>
 
     	<div id="container">
     		<br>
-    		<font size="12">Pastas</font>
+    		<font size="8">Pastas</font>
     	</div>
     	
 		<div id="container">

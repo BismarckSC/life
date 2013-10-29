@@ -68,7 +68,7 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>Pasta: <?php echo $album; ?></span></h2>
+    		<h2 class="title"><span>- Pasta: <?php echo $album; ?> -</span></h2>
     		<br>
     		Pagina 1 de 15
     	</div>

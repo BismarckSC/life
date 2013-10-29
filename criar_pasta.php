@@ -63,7 +63,7 @@
         </div>
 
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Criar pastas</span></h2>
+        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>- Criar pastas -</span></h2>
         
     	</div>
         
@@ -71,27 +71,39 @@
         
         <div id="container">
     		<label>Pastas:</label>
+    		<br>
 <?php
 	$qtde = $con->qtde();
-	if($qtde > 0) {
+	if($qtde > 0) { ?>
+		<form class="form-horizontal" role="form">
+		<table>
+<?php
 		for($i = 0; $i < $qtde; $i++) {
 			$rst = $con->proxima();
 ?>
-    		<form class="form-horizontal" role="form">
-				<?php echo $rst["nome"]; ?><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-default">Adicionar Fotos</a>
-			</form>
+    		
+    		<tr>
+    		<!--<form class="form-horizontal" role="form">-->
+				<td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td>
+			<!--</form>-->
+			</tr>
+			
 <?php
-		}
+		} ?>
+		</table>
+		</form>
+<?php		
 	}
 	$con->fechar();
 ?>
 		</div>
+		<br>
         <div id="container">
 			<form class="form-horizontal" role="form" method="post" action="app/criar_pasta.php">
-				<input type="text" class="form-control" name="txtnome" placeholder="Insira o nome">
+				<input type="text" class="form-control" name="txtnome" placeholder="Insira o nome da pasta">
 				<button type="submit" class="btn btn-default">Criar Pasta</button>
 			</form>	
-			
+			<br>
 			<a href="admin.html" class="btn btn-default">Finalizar</a>
         </div>
     </body>
