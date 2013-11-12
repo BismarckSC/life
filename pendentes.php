@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    include 'app/conexao.php';
+
+    $nome = $_SESSION["user_nome"];
+    $id = $_SESSION["user_id"];
+
+    
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
@@ -45,33 +55,44 @@
         </div>
         
         <div class="container">
-        	<h1 id="logo">
-            <a href="admin.html">
+            <h1 id="logo">
             <img src="images/life_logo.png"/>
-            </a>
             </h1>
         </div>
+
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Triagens em andamento</span></h2>
 			<ul id="grid" class="group">
-				<li>
-		            <div class="details">
-		            	<h3>Adicionar Álbum</h3>
-		            </div>
-		           <a class="more" href="criar_album.html"><img src="images/plus.png" width="290px"/></a>
-		        </li>
+                <?php
+                    $con = new Conexao;
+    
+                    $con->criar();
+                    $con->selecionar();
+                    $con->executar("SELECT id, nome, evento FROM cliente WHERE acesso = 1;");
+                    $qtde = $con->qtde();
+                    for($i = 0; $i < $qtde; $i++) {
+                        $rst = $con->proxima();
+                ?>
+                <li>
+                    <div class="details2">
+                        <h3><?php echo $rst["nome"]; ?></h3>
+                    </div>
+                   <a class="more" href="editar_album.php"><img src="images/pasta.png" width="290px"/></a>
+                </li>
+
+                <!--
 		        <li>
 		            <div class="details2">
-		            	<h3>Triagens em andamento</h3>
+		            	<h3>NOME</h3>
+		            	<a class="more" href="">editar</a>
 		            </div>
-		           <a class="more" href="pendentes.php"><img src="images/2.jpg" width="290px"/></a>
-		        </li>
-		        <li>
-		            <div class="details1">
-		            	<h3>Triagens finalizadas</h3>
-		            </div>
-		           <a class="more" href="finalizados.php"><img src="images/3.jpg" width="290px"/></a>
-		        </li>
+		           <a class="more" href="#imagem2"><img src="images/2.jpg" width="290px"/></a>
+		        </li> -->
+
+                <?php
+                    }
+                    $con->fechar();
+                ?>
 		 	</ul>
         </div>
     </body>

@@ -72,30 +72,29 @@
         <div id="container">
     		<label>Pastas:</label>
     		<br>
-<?php
-	$qtde = $con->qtde();
-	if($qtde > 0) { ?>
-		<form class="form-horizontal" role="form">
-		<table>
-<?php
-		for($i = 0; $i < $qtde; $i++) {
-			$rst = $con->proxima();
-?>
-    		
-    		<tr>
-    		<!--<form class="form-horizontal" role="form">-->
-				<td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td>
-			<!--</form>-->
-			</tr>
+			<?php
+			$qtde = $con->qtde();
+			if($qtde > 0) { ?>
+				<form class="form-horizontal" role="form">
+				<table>
+			<?php
+				for($i = 0; $i < $qtde; $i++) {
+					$rst = $con->proxima();
+			?>
+    				<tr>
+    				<!--<form class="form-horizontal" role="form">-->
+					<td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td>
+					<!--</form>-->
+					</tr>
 			
-<?php
-		} ?>
-		</table>
-		</form>
-<?php		
-	}
-	$con->fechar();
-?>
+			<?php
+			} ?>
+				</table>
+				</form>
+		<?php		
+			}
+			$con->fechar();
+		?>
 		</div>
 		<br>
         <div id="container">
