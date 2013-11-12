@@ -74,7 +74,7 @@
         </div>
 
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>- Adicionando fotos ao álbum: <?php echo $nome; ?> -</span></h2>
+        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>- Adicionando fotos à pasta: <?php echo $nome; ?> -</span></h2>
     	</div>
 		
 		<div id="dropbox">

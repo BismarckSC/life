@@ -2,7 +2,11 @@
     include 'app/conexao.php';
 
     session_start();
-    $id = $_SESSION["e_album_id"];
+    //$id = $_SESSION["e_album_id"];
+    $id = $_GET["id"];
+    $nome = $_GET["nome"];
+    $_SESSION["e_album_id"] = $id;
+    $_SESSION["e_album_nome_cliente"] = $nome;
     
     $con = new Conexao;
     
@@ -79,7 +83,7 @@
             
                     <tr>
                     <!--<form class="form-horizontal" role="form">-->
-                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td><td><button type="submit" class="btn btn-small">Excluir Pasta</button></td>
+                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td><td><a href="" class="btn btn-small">Excluir Fotos</a></td><td><button type="submit" class="btn btn-small">Excluir Pasta</button></td>
                     <!--</form>-->
                     </tr>
             
@@ -91,15 +95,8 @@
             }
             $con->fechar();
         ?>
-
-
-
-    		<form class="form-horizontal" role="form">
-				Cerimonia <button type="submit" class="btn btn-default">Adicionar Fotos</button>
-				<button type="submit" class="btn btn-default">Excluir Pasta</button>
-			</form>	
     	</div>
-        
+        <br>
         <div id="container">
             <!--
 			<form class="form-horizontal" role="form">
@@ -108,7 +105,7 @@
 			</form>	
 			
 			<button type="submit" class="btn btn-default">Finalizar</button> -->
-            <form class="form-horizontal" role="form" method="post" action="app/criar_pasta.php">
+            <form class="form-horizontal" role="form" method="post" action="app/editar_album.php">
                 <input type="text" class="form-control" name="txtnome" placeholder="Insira o nome da pasta">
                 <button type="submit" class="btn btn-default">Criar Pasta</button>
             </form> 

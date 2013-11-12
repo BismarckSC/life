@@ -1,4 +1,12 @@
 <?php
+    function get_user(){
+
+    }
+
+    if(isset($_GET['get_user'])){
+        get_user();
+    }
+
     session_start();
     include 'app/conexao.php';
 
@@ -77,7 +85,7 @@
                     <div class="details2">
                         <h3><?php echo $rst["nome"]; ?></h3>
                     </div>
-                   <a class="more" href="editar_album.php"><img src="images/pasta.png" width="290px"/></a>
+                   <a class="more" href="editar_album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
                 </li>
 
                 <!--

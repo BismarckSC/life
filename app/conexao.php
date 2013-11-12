@@ -12,6 +12,8 @@ class Conexao {
 	
 	protected $con;
 	protected $rs;
+
+	protected $uidEditAlbum;
 	
 	public function criar() {
 		$this->con = mysql_connect($this->endereco, $this->usuario, $this->senha) or die("Impossivel conectar");
@@ -51,6 +53,16 @@ class Conexao {
 	
 	public function fechar() {
 		mysql_close($this->con);
+	}
+
+	public function setUidEditAlbum($id){
+		$this->uidEditAlbum = $id;
+		return true;
+	}
+
+	public function getUidEditAlbum(){
+		//return $this->uidEditAlbum;
+		return 1;
 	}
 	
 	public function selecionar() {
