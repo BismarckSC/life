@@ -6,12 +6,21 @@
 	$uid = $_SESSION["user_id"];
 	$id = $_GET["id"];
 	$album = $_GET["nome"];
+	$pagina = $_GET["pag"];
+	
+	$limite = 15;
+	$off = ($pagina * $limite) - $limite;
 
 	$con = new Conexao;
-	
 	$con->criar();
 	$con->selecionar();
-	$con->executar("select f.nome from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = '$id';");
+	
+	$con->executar("select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id");
+	$qtde = $con->qtde();
+	$totalpaginas = ceil($qtde/$limite);
+
+	$q = "select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id limit $off,$limite;";
+	$con->executar($q);
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +57,45 @@
 				});
 			}
 		</script>
+		
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+ 
+		<script>
+		function SubmitForm(num) {
+			$.post("app/marcar_foto.php", {id:num});
+			
+			obj = "div" + num;
+			document.getElementById(obj).setAttribute("class", "details1");
+			
+			obj1 = "mar" + num;
+			obj2 = "desmar" + num;
+			document.getElementById(obj1).setAttribute("style", "display:none;");
+			document.getElementById(obj2).setAttribute("style", "");
+			
+			obj11 = "mar1" + num;
+			obj21 = "desmar1" + num;
+			document.getElementById(obj11).setAttribute("style", "display:none;");
+			document.getElementById(obj21).setAttribute("style", "");
+		}
+		
+		function SubmitForm2(num) {
+			$.post("app/desmarcar_foto.php", {id:num});
+			
+			obj = "div" + num;
+			document.getElementById(obj).setAttribute("class", "details");
+			
+			obj1 = "mar" + num;
+			obj2 = "desmar" + num;
+			document.getElementById(obj1).setAttribute("style", "");
+			document.getElementById(obj2).setAttribute("style", "display:none;");
+			
+			obj11 = "mar1" + num;
+			obj21 = "desmar1" + num;
+			document.getElementById(obj11).setAttribute("style", "");
+			document.getElementById(obj21).setAttribute("style", "display:none;");
+		}
+		</script>
+		
     </head>
     <body>
     	<div class="codrops-top">
@@ -70,7 +118,7 @@
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
     		<h2 class="title"><span>- Pasta: <?php echo $album; ?> -</span></h2>
     		<br>
-    		Pagina 1 de 15
+    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas; ?>
     	</div>
     	
 		<div id="container">
@@ -81,11 +129,26 @@
 		$rst = $con->proxima();
 ?>
 				<li>
-		            <div class="details">
+				<?php
+					if($rst['selecionada'] == 0) {
+				?>
+		            <div class="details" id="div<?php echo $rst['id'] ?>">
 		            	<h3><?php echo $rst['nome']; ?></h3>
-		                <a class="more" href="">marcar</a>
+		                <a class="more" id="mar<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+		                <a class="more" id="desmar<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 		            </div>
-		           <a class="more" href="#imagem<?php echo $i; ?>"><img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="200px"/></a>
+		        <?php
+					} else {
+				?>
+					<div class="details1" id="div<?php echo $rst['id'] ?>">
+		            	<h3><?php echo $rst['nome']; ?></h3>
+		            	<a class="more" id="mar<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+		                <a class="more" id="desmar<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+		            </div>
+				<?php
+					}
+				?>
+		           <a class="more" href="#imagem<?php echo $i; ?>"><img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="290px"/></a>
 		        </li>
 <?php
 	}
@@ -93,7 +156,7 @@
 		</ul>
 		<ul id="information">
 <?php
-	$con->executar("select f.nome from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = '$id';");
+	$con->executar($q);
 	for($i = 0; $i < $qtde; $i++) {
 		$rst = $con->proxima();
 ?>
@@ -101,6 +164,24 @@
             	<div>
                		<img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" />
                     <a href="#" class="close">x</a>
+                    <?php if($i > 0) { ?>
+                    	<a href="#imagem<?php echo $i - 1; ?>" class="more"><</a>
+                    <?php }
+						if($rst['selecionada'] == 0) {
+					?>
+				            <a class="more" id="mar1<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+				    <?php
+						} else {
+					?>
+				        	<a class="more" id="mar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+					<?php
+						}
+						if($i < $qtde - 1) { 
+					?>
+                    	<a href="#imagem<?php echo $i + 1; ?>" class="more">></a>
+                    <?php } ?>
             	</div>
 				<span class="backface"></span>
 <?php
@@ -111,8 +192,16 @@
 			</ul>
 		</div>
 		<div class="container span4 offset4">
-			<button type="button" class="btn" onclick="" id="">Anterior</button>
-			<button type="button" class="btn" onclick="" id="">Próxima</button>
+			<?php if($pagina > 1) { ?>
+			<a type="button" class="btn" href="album.php?id=<?php echo $id; ?>&nome=<?php echo $album; ?>&pag=<?php echo $pagina - 1?>">Anterior</a>
+			<?php } else {?>
+			<a type="button" class="btn" enable="false">Anterior</a>
+			<?php }
+			if($pagina < $totalpaginas) { ?>
+			<a type="button" class="btn" href="album.php?id=<?php echo $id; ?>&nome=<?php echo $album; ?>&pag=<?php echo $pagina + 1?>">Próxima</a>
+			<?php } else {?>
+			<a type="button" class="btn" enable="false">Próxima</a>
+			<?php } ?>
 		</div>
     </body>
 </html>

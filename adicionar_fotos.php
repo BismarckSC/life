@@ -15,6 +15,7 @@
 	
 	session_start();
 	$_SESSION["c_pasta_nome"] = $nome;
+	$_SESSION["c_pasta_id"] = $id;
 ?>
 
 <!DOCTYPE html>

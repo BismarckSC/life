@@ -1,7 +1,7 @@
 <?php
 include 'conexao.php';
 
-class CriarPasta {
+class AddImg {
 	protected $nome;
 	protected $id;
 	
@@ -18,7 +18,7 @@ class CriarPasta {
 
 		$con->criar();
 		$con->selecionar();
-		$id = $con->adicao_de_fotos($this->nome,$this->id);
+		$con->executar("update fotos set selecionada = 1 where id = '$id';");
 		$con->fechar();
 	}
 }

@@ -96,7 +96,7 @@
 		            <div class="details">
 		            	<h3><?php echo $rst["nome"]; ?></h3>
 		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
+		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="images/pasta.png" width="290px"/></a>
 		        </li>
 <?php
 	}

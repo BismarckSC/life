@@ -6,6 +6,7 @@
 session_start();
 $id = $_SESSION["c_album_id"];
 $nome = $_SESSION["c_pasta_nome"];
+$id_pasta = $_SESSION["c_pasta_id"];
 
 $demo_mode = false;
 $upload_dir = "uploads/$id/$nome/";
@@ -44,7 +45,7 @@ if(array_key_exists('pic',$_FILES) && $_FILES['pic']['error'] == 0 ){
 		mysql_set_charset('utf8', $con);
 		mysql_select_db("life", $con);
 		$fotonome = $pic['name'];
-		$consulta = "CALL adicao_de_fotos('$fotonome','$id');";
+		$consulta = "CALL adicao_de_fotos('$fotonome','$id_pasta');";
 		mysql_query($consulta, $con);
 		mysql_close($con);
 	
