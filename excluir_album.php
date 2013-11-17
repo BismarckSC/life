@@ -12,7 +12,9 @@
     
     $con->criar();
     $con->selecionar();
-    $con->executar("SELECT p.id, p.nome FROM cliente_pasta c, pasta p WHERE c.id_pasta = p.id AND c.id_cliente = '$id';");
+    $con->executar("SELECT evento FROM cliente WHERE id = '$id';");
+    $rst = $con->proxima();
+    $con->fechar();
 ?>
 
 <!DOCTYPE html>
@@ -66,62 +68,19 @@
             </h1>
         </div>
 
-        <?php
-            $con2 = new Conexao;
-    
-            $con2->criar();
-            $con2->selecionar();
-            $con2->executar("SELECT evento FROM cliente WHERE id = '$id';");
-            $rst2 = $con2->proxima();
-        ?>
-
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>- Edição de Álbum: <?php echo $rst2['evento']; ?> -</span></h2>
-        <?php $con2->fechar(); ?>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir álbum "<?php echo $rst['evento']; ?>"?</span></h2>
             <br><br>
-    		<label>Pastas:</label>
-            <br>
-            <?php
-            $qtde = $con->qtde();
-            if($qtde > 0) { ?>
-                <form class="form-horizontal" role="form">
-                <table>
-            <?php
-                for($i = 0; $i < $qtde; $i++) {
-                    $rst = $con->proxima();
-            ?>
-            
-                    <tr>
-                    <!--<form class="form-horizontal" role="form">-->
-                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos_2.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td><td><a href="" class="btn btn-small">Excluir Fotos</a></td><td><a href="excluir_pasta.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Excluir Pasta</a></td>
-                    <!--</form>-->
-                    </tr>
-            
-            <?php
-            } ?>
-                </table>
-                </form>
-        <?php       
-            }
-            $con->fechar();
-        ?>
-    	</div>
-        <br>
-        <div id="container">
-            <!--
-			<form class="form-horizontal" role="form">
-				<input type="text" class="form-control" id="" placeholder="Insira o nome">
-				<button type="submit" class="btn btn-default">Criar Pasta</button>
-			</form>	
-			
-			<button type="submit" class="btn btn-default">Finalizar</button> -->
-            <form class="form-horizontal" role="form" method="post" action="app/editar_album.php">
-                <input type="text" class="form-control" name="txtnome" placeholder="Insira o nome da pasta">
-                <button type="submit" class="btn btn-default">Criar Pasta</button>
-            </form> 
-            <br>
-			<a href="editar_infos.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Editar Informações</a>
-            <a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir Álbum</a>
         </div>
+		
+        <div class="container">
+            <form action="app/excluir_album.php" method="post">
+                <input type="hidden" name="album" value='<?php echo $id; ?>' />
+                <button type="submit" class="btn btn-default">Sim</button>
+                <a href="editar_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Não</a>
+            </form>
+        
+        </div>
+        
     </body>
 </html>
