@@ -59,7 +59,7 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="">
+            <a href="admin.html">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
@@ -75,7 +75,7 @@
         </div>
 
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>- Adicionando fotos à pasta: <?php echo $nome; ?> -</span></h2>
+        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Adicionar fotos à pasta "<?php echo $nome; ?>"</span></h2>
     	</div>
 		
 		<div id="dropbox">

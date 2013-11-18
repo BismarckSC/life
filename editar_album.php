@@ -51,7 +51,7 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="">
+            <a href="admin.html">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
@@ -76,7 +76,7 @@
         ?>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>- Edição de Álbum: <?php echo $rst2['evento']; ?> -</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Editar álbum "<?php echo $rst2['evento']; ?>"</span></h2>
         <?php $con2->fechar(); ?>
             <br><br>
     		<label>Pastas:</label>
@@ -122,6 +122,10 @@
             <br>
 			<a href="editar_infos.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Editar Informações</a>
             <a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir Álbum</a>
+        </div>
+        <br><br>
+        <div class="container">
+            <a href="pendentes.php" class="btn btn-default">Voltar</a>
         </div>
     </body>
 </html>

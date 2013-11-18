@@ -46,7 +46,7 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="">
+            <a href="admin.html">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
@@ -69,7 +69,7 @@
     
                     $con->criar();
                     $con->selecionar();
-                    $con->executar("SELECT id, nome, evento FROM cliente WHERE acesso = 0;");
+                    $con->executar("SELECT id, nome, evento FROM cliente WHERE acesso = 0 ORDER BY nome;");
                     $qtde = $con->qtde();
                     for($i = 0; $i < $qtde; $i++) {
                         $rst = $con->proxima();
@@ -78,13 +78,16 @@
                     <div class="details1">
                         <h3><?php echo $rst["nome"]; ?></h3>
                     </div>
-                   <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
+                   <a class="more" href="final.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
                 </li>
                 <?php
                     }
                     $con->fechar();
                 ?>
 		 	</ul>
+        </div>
+        <div class="container">
+            <a href="admin.html" class="btn btn-default">Voltar</a>
         </div>
     </body>
 </html>

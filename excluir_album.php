@@ -53,7 +53,7 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="">
+            <a href="admin.html">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
