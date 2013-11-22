@@ -1,22 +1,20 @@
 <?php
-	include 'app/conexao.php';
+    include 'app/conexao.php';
 
-	$id = $_GET["id"];
-	
-	$con = new Conexao;
-	
-	$con->criar();
-	$con->selecionar();
-	$con->executar("SELECT nome FROM pasta WHERE id = '$id';");
-	
-	$rst = $con->proxima();
-	$nome = $rst["nome"];
-	$con->fechar();
-	
-	session_start();
-
-	$_SESSION["c_pasta_id"] = $id;
-    $_SESSION["c_pasta_nome"] = $nome;
+    session_start();
+    //$id = $_SESSION["e_album_id"];
+    $id = $_GET["id"];
+    $nome = $_GET["nome"];
+    $_SESSION["e_album_id"] = $id;
+    $_SESSION["e_album_nome_cliente"] = $nome;
+    
+    $con = new Conexao;
+    
+    $con->criar();
+    $con->selecionar();
+    $con->executar("SELECT evento FROM cliente WHERE id = '$id';");
+    $rst = $con->proxima();
+    $con->fechar();
 ?>
 
 <!DOCTYPE html>
@@ -35,20 +33,15 @@
         <meta name="author" content="Dark Horses" />
         <link rel="shortcut icon" href="../favicon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="assets/css/styles.css" />
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/reset.css" media="screen" />
 		<link rel="stylesheet" href="css/style.css" media="screen" />
-		<link rel="stylesheet" href="css/css3_3d.css" media="screen" />
+        <link rel="stylesheet" href="css/css3_3d.css" media="screen" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/modernizr.js"></script>
-		
-		 <!--[if lt IE 9]>
-          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
 
 		<script>
 			if (!Modernizr.csstransforms) {
@@ -70,41 +63,24 @@
         </div>
         
         <div class="container">
-        	<h1 id="logo">
+            <h1 id="logo">
             <img src="images/life_logo.png"/>
             </h1>
         </div>
 
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Adicionar fotos à pasta "<?php echo $nome; ?>"</span></h2>
-    	</div>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Bloquear acesso do cliente ao álbum "<?php echo $rst['evento']; ?>"?</span></h2>
+            <br><br>
+        </div>
 		
-		<div id="dropbox">
-			<span class="message">Arraste e solte as imagens aqui.</span>
-		</div>
-        
-		<?php
-			$con->criar();
-			$con->selecionar();
-			$con->executar("SELECT c.id, c.nome FROM cliente c, cliente_pasta WHERE id_pasta = $id AND id_cliente = c.id");
-	
-			$rst = $con->proxima();
-			$idCliente = $rst["id"];
-			$nome = $rst["nome"];
-			$con->fechar();
-		?>
-
         <div class="container">
-			<a class="btn" href="editar_album.php?id=<?php echo $idCliente; ?>&nome=<?php echo $rst['nome']; ?>">Voltar</a>
+            <form action="app/bloquear_acesso.php" method="post">
+                <input type="hidden" name="acesso" value='<?php echo $id; ?>' />
+                <button type="submit" class="btn btn-default">Sim</button>
+                <a href="editar_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Não</a>
+            </form>
+        
         </div>
         
-        <!-- Including The jQuery Library -->
-		<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-		
-		<!-- Including the HTML5 Uploader plugin -->
-		<script src="assets/js/jquery.filedrop.js"></script>
-		
-		<!-- The main script file -->
-        <script src="assets/js/script.js"></script>
     </body>
 </html>

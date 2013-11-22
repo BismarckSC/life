@@ -6,6 +6,25 @@ class ExcluirAlbum{
 
 	protected $id;
 
+	public function excluirFotos($id){
+		$con4 = new Conexao;
+		$con4->criar();
+		$con4->selecionar();
+
+		$con5 = new Conexao;
+		$con5->criar();
+		$con5->selecionar();
+
+		$con4->executar("SELECT f.id FROM cliente_pasta c, pasta_fotos p, fotos f WHERE $id = c.id_cliente AND c.id_pasta = p.id_pasta AND p.id_foto = f.id;");
+		$qtde2 = $con4->qtde();
+        for($i = 0; $i < $qtde2; $i++) {
+            $rst2 = $con4->proxima();
+            $con5->executar("DELETE FROM fotos WHERE id = $rst2[id];");
+        }
+        $con4->fechar();
+        $con5->fechar();
+	}
+
 	public function excluirPastas($id){
 		$con = new Conexao;
 		$con->criar();
@@ -46,6 +65,7 @@ session_start();
 
 $ea = new ExcluirAlbum;
 $ea->setId($_POST["album"]);
+$ea->excluirFotos($ea->getId());
 $ea->excluirPastas($ea->getId());
 $ea->excluir($ea->getId());
 

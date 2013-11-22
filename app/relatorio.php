@@ -6,6 +6,8 @@ class Relatorio{
 
 	protected $id;
 	protected $nome;
+	protected $path;
+	protected $my_file;
 
 	public function setId($id){
 		$this->id = $id;
@@ -24,14 +26,22 @@ class Relatorio{
 		$this->nome = $nome;
 	}
 
+	public function getPath(){
+		return $this->path;
+	}
+
+	public function getFile(){
+		return $this->my_file;
+	}
+
 	public function gerarRelatorio($id) {
-		$path = "../relatorios/".$id;
-		if (!file_exists($path)) {
-    		mkdir($path, 0777, true);
+		$this->path = "../relatorios/".$id;
+		if (!file_exists($this->path)) {
+    		mkdir($this->path, 0777, true);
 		}
 		//create
-		$my_file = $path."/".$id.".txt";
-		$handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file); //implicitly creates file
+		$this->my_file = $this->path."/".$id.".txt";
+		$handle = fopen($this->my_file, 'w') or die('Cannot open file:  '.$this->my_file); //implicitly creates file
 
 		$con = new Conexao;
 		$con->criar();
@@ -58,5 +68,7 @@ $r->setId($_POST["relatorio"]);
 $r->setnome($_SESSION["e_album_nome_cliente"]);
 $r->gerarRelatorio($r->getId());
 
-header("Location: ../final.php?id=".$r->getId()."&nome=".$r->getNome());
+header("Location: down_rel.php?file=".$r->getFile());
+//header("Location: ../final.php?id=".$r->getId()."&nome=".$r->getNome());
+
 ?>

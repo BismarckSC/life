@@ -87,7 +87,7 @@
 			<button type="submit" class="btn btn-default">Relatório de fotos selecionadas</button>
             <br><br>
             <a href="liberar_acesso.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Liberar acesso</a>
-            <a href="excluir_album_2.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir Álbum</a>
+            <a href="excluir_album_2.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir álbum</a>
             <br><br><br>
             <a href="finalizados.php" class="btn btn-default">Voltar</a>
         </form>

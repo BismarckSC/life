@@ -19,6 +19,25 @@ class ExcluirPasta{
         $this->nome = $rst["nome"];
 	}
 	
+	public function excluirFotos($id){
+		$con3 = new Conexao;
+		$con3->criar();
+		$con3->selecionar();
+
+		$con4 = new Conexao;
+		$con4->criar();
+		$con4->selecionar();
+
+		$con3->executar("SELECT id FROM pasta_fotos, fotos WHERE $id = id_pasta AND id_foto = id;");
+		$qtde = $con3->qtde();
+        for($i = 0; $i < $qtde; $i++) {
+            $rst = $con3->proxima();
+            $con4->executar("DELETE FROM fotos WHERE id = $rst[id];");
+        }
+        $con3->fechar();
+        $con4->fechar();
+	}
+
 	public function excluirPasta($id) {
 		$con2 = new Conexao;
 		$con2->criar();
@@ -49,6 +68,7 @@ session_start();
 $ep = new ExcluirPasta;
 $ep->setIdPasta($_POST["folder"]);
 $ep->setParametros($ep->getIdPasta());
+$ep->excluirFotos($ep->getIdPasta());
 $ep->excluirPasta($ep->getIdPasta());
 //$ep->setid($_SESSION["e_album_id"]);
 //$ep->excluir();
