@@ -63,7 +63,7 @@
         </div>
 
         <div id="container">
-        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>- Criar pastas -</span></h2>
+        	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Criar pastas</span></h2>
         
     	</div>
         

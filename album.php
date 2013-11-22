@@ -116,9 +116,9 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>- Pasta: <?php echo $album; ?> -</span></h2>
-    		<br>
-    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas; ?>
+    		<h2 class="title"><span>Fotos da pasta "<?php echo $album; ?>"</span></h2>
+    		<!--<br>
+    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas + 1; ?> -->
     	</div>
     	
 		<div id="container">
@@ -191,7 +191,12 @@
 			</li>
 			</ul>
 		</div>
-		<div class="container span4 offset4">
+		<div class="container">
+		<!--<div class="container" span4 offset4> -->
+			<?php if($totalpaginas > 1){ ?>
+			<br>
+    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas; ?>
+    		<br><br>
 			<?php if($pagina > 1) { ?>
 			<a type="button" class="btn" href="album.php?id=<?php echo $id; ?>&nome=<?php echo $album; ?>&pag=<?php echo $pagina - 1?>">Anterior</a>
 			<?php } else {?>
@@ -202,6 +207,11 @@
 			<?php } else {?>
 			<a type="button" class="btn" enable="false">Próxima</a>
 			<?php } ?>
+			<?php } ?>
 		</div>
+		<br>
+        <div class="container">
+            <a href="cliente.php" class="btn btn-default">Voltar</a>
+        </div>
     </body>
 </html>
