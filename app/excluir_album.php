@@ -49,7 +49,23 @@ class ExcluirAlbum{
 		$con3->criar();
 		$con3->selecionar();
 		$con3->executar("DELETE FROM cliente WHERE id = $id;");
-		$con3->fechar;
+		$con3->fechar();
+	}
+
+	public function rrmdir($dir) { 
+    	if (is_dir($dir)) { 
+     		$objects = scandir($dir); 
+    		foreach ($objects as $object) { 
+    			if ($object != "." && $object != "..") { 
+        			if (filetype($dir."/".$object) == "dir")
+        				$this->rrmdir($dir."/".$object);
+        			else
+        				unlink($dir."/".$object); 
+    			} 
+    		} 
+    		reset($objects); 
+    		rmdir($dir); 
+		} 
 	}
 
 	public function setId($id){
@@ -68,6 +84,7 @@ $ea->setId($_POST["album"]);
 $ea->excluirFotos($ea->getId());
 $ea->excluirPastas($ea->getId());
 $ea->excluir($ea->getId());
+$ea->rrmdir("../uploads/".$ea->getId());
 
 header("Location: ../admin.html");
 ?>

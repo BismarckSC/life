@@ -5,6 +5,7 @@ include 'conexao.php';
 class ExcluirPasta{
 
 	protected $idPasta;
+	protected $nomePasta;
 	protected $id;
 	protected $nome;
 
@@ -43,7 +44,23 @@ class ExcluirPasta{
 		$con2->criar();
 		$con2->selecionar();
 		$con2->executar("DELETE FROM pasta WHERE id = $id;");
-		$con2->fechar;
+		$con2->fechar();
+	}
+
+	public function rrmdir($dir) { 
+    	if (is_dir($dir)) { 
+     		$objects = scandir($dir); 
+    		foreach ($objects as $object) { 
+    			if ($object != "." && $object != "..") {
+        			if (filetype($dir."/".$object) == "dir")
+        				$this->rrmdir($dir."/".$object);
+        			else
+        				unlink($dir."/".$object);
+    			} 
+    		} 
+    		reset($objects); 
+    		rmdir($dir); 
+		} 
 	}
 
 	public function setIdPasta($id){
@@ -61,6 +78,20 @@ class ExcluirPasta{
 	public function getNome(){
 		return $this->nome;
 	}
+
+	public function setNomePasta($id){
+		$con5 = new Conexao;
+		$con5->criar();
+		$con5->selecionar();
+		$con5->executar("SELECT nome FROM pasta WHERE $id = id;");
+		$rst = $con5->proxima();
+        $con5->fechar();
+        $this->nomePasta = $rst["nome"];
+	}
+
+	public function getNomePasta(){
+        return $this->nomePasta;
+	}
 }
 
 session_start();
@@ -68,8 +99,10 @@ session_start();
 $ep = new ExcluirPasta;
 $ep->setIdPasta($_POST["folder"]);
 $ep->setParametros($ep->getIdPasta());
+$ep->setNomePasta($ep->getIdPasta());
 $ep->excluirFotos($ep->getIdPasta());
 $ep->excluirPasta($ep->getIdPasta());
+$ep->rrmdir("../uploads/".$ep->getId()."/".$ep->getNomePasta());
 //$ep->setid($_SESSION["e_album_id"]);
 //$ep->excluir();
 

@@ -11,7 +11,7 @@ class LiberarAcesso{
 		$con->criar();
 		$con->selecionar();
 		$con->executar("UPDATE cliente SET acesso = 1 WHERE id = $id;");
-		$con->fechar;
+		$con->fechar();
 	}
 
 	public function setId($id){
