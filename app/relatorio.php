@@ -43,15 +43,16 @@ class Relatorio{
 		$this->my_file = $this->path."/".$id.".txt";
 		$handle = fopen($this->my_file, 'w') or die('Cannot open file:  '.$this->my_file); //implicitly creates file
 
+		fwrite($handle, "**RELATÓRIO DE TRIAGEM DE FOTOS**\n\nCliente: ".$this->nome."\n\n");
 		$con = new Conexao;
 		$con->criar();
 		$con->selecionar();
-		$con->executar("SELECT f.nome, p.id_pasta FROM fotos f, pasta_fotos p, cliente_pasta c WHERE f.selecionada = 1 AND f.excluida = 0 AND f.id = p.id_foto AND p.id_pasta = c.id_pasta AND c.id_cliente = $id;");
+		$con->executar("SELECT f.nome, p.id_pasta, pp.nome AS npasta FROM fotos f, pasta_fotos p, cliente_pasta c, pasta pp WHERE f.selecionada = 1 AND f.excluida = 0 AND f.id = p.id_foto AND p.id_pasta = c.id_pasta AND c.id_pasta = pp.id AND c.id_cliente = $id;");
 		$qtde = $con->qtde();
         for($i = 0; $i < $qtde; $i++) {
             $rst = $con->proxima();
 			//write
-			$data = "Pasta: ".$rst["id_pasta"]." Foto: ".$rst["nome"]."\n";
+			$data = "Pasta: ".$rst["npasta"]."\t\tFoto: ".$rst["nome"]."\n";
 			fwrite($handle, $data);
 		}
 

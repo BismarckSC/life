@@ -20,6 +20,7 @@ evento VARCHAR(100) NOT NULL,
 descricao VARCHAR(1000) NOT NULL,
 acesso INT(1) NOT NULL DEFAULT 1,
 data_cadastro DATE NOT NULL,
+n_fotos_contrato INT NOT NULL,
 PRIMARY KEY(id));
 
 CREATE TABLE pasta(

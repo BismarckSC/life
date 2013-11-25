@@ -15,11 +15,11 @@
 	$con->criar();
 	$con->selecionar();
 	
-	$con->executar("select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id");
+	$con->executar("select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.excluida <> 1 and f.id = p.id_foto and p.id_pasta = $id");
 	$qtde = $con->qtde();
 	$totalpaginas = ceil($qtde/$limite);
 
-	$q = "select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id limit $off,$limite;";
+	$q = "select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.excluida <> 1 and f.id = p.id_foto and p.id_pasta = $id limit $off,$limite;";
 	$con->executar($q);
 ?>
 
@@ -103,7 +103,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">(sair)</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">(sair)</a>
             </span>
             <div class="clr"></div>
         </div>

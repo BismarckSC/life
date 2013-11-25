@@ -55,7 +55,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">alterar senha</a>|<a href="">sair</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">alterar senha</a>|<a href="">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -73,11 +73,6 @@
     		<h2 class="title"><span>Pastas do álbum do evento "<?php echo $rst["evento"]; ?>"</span></h2>
     		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
     		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
-    	</div>
-
-    	<div id="container">
-    		<br>
-    		<font size="8">Pastas</font>
     	</div>
     	
 		<div id="container">

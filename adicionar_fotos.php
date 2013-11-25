@@ -63,7 +63,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo <strong>ADMINISTRADOR</strong>! <a href="">(sair)</a>
+            	Seja Bem-vindo <strong>ADMINISTRADOR</strong>! <a href="">(sair)</a>
             </span>
             <div class="clr"></div>
         </div>
