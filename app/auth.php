@@ -1,5 +1,6 @@
 <?php
 include 'conexao.php';
+include 'HashCodeGenerator.php';
 
 $email = $_POST["email"];
 $senha = $_POST["senha"];
@@ -7,11 +8,14 @@ $senha = $_POST["senha"];
 if ($email == "admin" and $senha == "admin") {
 	header("Location:../admin.html");
 } else {
+	$hashClass = new HashCodeGenerator;
+	$hash = $hashClass->generateNewHash($senha);
+
 	$con = new Conexao;
 
 	$con->criar();
 	$con->selecionar();
-	$con->login($email,$senha);
+	$con->login($email,$hash);
 	
 	$qtde = $con->qtde();
 	
