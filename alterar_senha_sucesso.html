@@ -1,22 +1,3 @@
-<?php
-    include 'app/conexao.php';
-
-    session_start();
-    //$id = $_SESSION["e_album_id"];
-    $id = $_GET["id"];
-    $nome = $_GET["nome"];
-    $_SESSION["e_album_id"] = $id;
-    $_SESSION["e_album_nome_cliente"] = $nome;
-    
-    $con = new Conexao;
-    
-    $con->criar();
-    $con->selecionar();
-    $con->executar("SELECT evento FROM cliente WHERE id = '$id';");
-    $rst = $con->proxima();
-    $con->fechar();
-?>
-
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
@@ -53,11 +34,11 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="admin.html">
+            <a href="cliente.php">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="">sair</a>
+            	Seja Bem-Vindo! <a href="">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -69,17 +50,12 @@
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Bloquear acesso do cliente ao álbum "<?php echo $rst['evento']; ?>"?</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Senha alterada com sucesso!</span></h2>
             <br><br>
         </div>
 		
         <div class="container">
-            <form action="app/bloquear_acesso.php" method="post">
-                <input type="hidden" name="acesso" value='<?php echo $id; ?>' />
-                <button type="submit" class="btn btn-default">Sim</button>
-                <a href="editar_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Não</a>
-            </form>
-        
+            <a href="cliente.php" class="btn btn-default">Voltar</a>
         </div>
         
     </body>

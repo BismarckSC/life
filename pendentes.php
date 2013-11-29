@@ -49,7 +49,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="">alterar senha</a> | <a href="">sair</a>
+            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="">sair</a>
             </span>
             <div class="clr"></div>
         </div>
