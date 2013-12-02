@@ -12,6 +12,17 @@
 	$con->executar("SELECT * FROM cliente WHERE id = '$id';");
 	$rst = $con->proxima();
 	$con->fechar();
+	
+	$con1 = new Conexao;
+	
+	$con1->criar();
+	$con1->selecionar();
+	$con1->executar("select count(*) total, sum(f.selecionada) soma from fotos f, cliente_pasta cp, pasta_fotos pf where cp.id_cliente = '$id' and cp.id_pasta = pf.id_pasta and pf.id_foto = f.id;");
+	$con1_rst = $con1->proxima();
+	$con1->fechar();
+	
+	$total_fotos = $con1_rst["total"];
+	$fotos_selecionadas = $con1_rst["soma"];
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +66,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">alterar senha</a>|<a href="">sair</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="alterar_senha.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>">alterar senha</a>|<a href="">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -70,14 +81,9 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>- Evento: <?php echo $rst["evento"]; ?> -</span></h2>
+    		<h2 class="title"><span>Pastas do álbum do evento "<?php echo $rst["evento"]; ?>"</span></h2>
     		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
     		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
-    	</div>
-
-    	<div id="container">
-    		<br>
-    		<font size="8">Pastas</font>
     	</div>
     	
 		<div id="container">
@@ -96,7 +102,7 @@
 		            <div class="details">
 		            	<h3><?php echo $rst["nome"]; ?></h3>
 		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
+		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="images/pasta.png" width="290px"/></a>
 		        </li>
 <?php
 	}
@@ -106,13 +112,13 @@
 		</div>
 
 		<div id="container">
-    		Fotos selecionadas: 200 de 500
+    		Fotos selecionadas: <?php echo $fotos_selecionadas; ?> de <?php echo $total_fotos; ?>
     		<br>
     		<br>
     	</div>
 
 		<div class="container span4 offset4">
-			<button type="button" class="btn" onclick="" id="">Efetuar Triagem</button>
+			<a class="btn" href="app/triagem.php?operacao=1">Efetuar Triagem</a>
 			<button type="button" class="btn" onclick="" id="">Finalizar Triagem</button>
 		</div>
     </body>

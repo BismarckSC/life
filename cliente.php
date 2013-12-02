@@ -12,6 +12,17 @@
 	$con->executar("SELECT * FROM cliente WHERE id = '$id';");
 	$rst = $con->proxima();
 	$con->fechar();
+	
+	$con1 = new Conexao;
+	
+	$con1->criar();
+	$con1->selecionar();
+	$con1->executar("select count(*) total, sum(f.selecionada) soma from fotos f, cliente_pasta cp, pasta_fotos pf where cp.id_cliente = '$id' and cp.id_pasta = pf.id_pasta and pf.id_foto = f.id and f.excluida = 0;");
+	$con1_rst = $con1->proxima();
+	$con1->fechar();
+	
+	$total_fotos = $con1_rst["total"];
+	$fotos_selecionadas = $con1_rst["soma"];
 ?>
 
 <!DOCTYPE html>
@@ -101,13 +112,13 @@
 		</div>
 
 		<div id="container">
-    		Fotos selecionadas: 200 de 500
+    		Fotos selecionadas: <?php echo $fotos_selecionadas; ?> de <?php echo $total_fotos; ?>
     		<br>
     		<br>
     	</div>
 
 		<div class="container span4 offset4">
-			<button type="button" class="btn" onclick="" id="">Efetuar Triagem</button>
+			<a class="btn" href="app/triagem.php?operacao=1">Efetuar Triagem</a>
 			<button type="button" class="btn" onclick="" id="">Finalizar Triagem</button>
 		</div>
     </body>
