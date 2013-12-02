@@ -1,28 +1,8 @@
 <?php
 	session_start();
-	include 'app/conexao.php';
 
 	$nome = $_SESSION["user_nome"];
 	$id = $_SESSION["user_id"];
-
-	$con = new Conexao;
-	
-	$con->criar();
-	$con->selecionar();
-	$con->executar("SELECT * FROM cliente WHERE id = '$id';");
-	$rst = $con->proxima();
-	$con->fechar();
-	
-	$con1 = new Conexao;
-	
-	$con1->criar();
-	$con1->selecionar();
-	$con1->executar("select count(*) total, sum(f.selecionada) soma from fotos f, cliente_pasta cp, pasta_fotos pf where cp.id_cliente = '$id' and cp.id_pasta = pf.id_pasta and pf.id_foto = f.id and f.excluida = 0;");
-	$con1_rst = $con1->proxima();
-	$con1->fechar();
-	
-	$total_fotos = $con1_rst["total"];
-	$fotos_selecionadas = $con1_rst["soma"];
 ?>
 
 <!DOCTYPE html>
@@ -70,56 +50,27 @@
             </span>
             <div class="clr"></div>
         </div>
-        
+
         <div class="container">
             <h1 id="logo">
-            <a href="cliente.php">
             <img src="images/life_logo.png"/>
-        	</a>
             </h1>
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>Pastas do álbum do evento "<?php echo $rst["evento"]; ?>"</span></h2>
-    		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
-    		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
-    	</div>
-    	
-		<div id="container">
-			<ul id="grid" class="group">
-<?php
-	$con2 = new Conexao;
-	
-	$con2->criar();
-	$con2->selecionar();
-	$con2->executar("select p.id, p.nome from cliente c, pasta p, cliente_pasta cp where c.id = cp.id_cliente and p.id = cp.id_pasta and c.id = '$id';");
-	$qtde = $con2->qtde();
-	for($i = 0; $i < $qtde; $i++) {
-		$rst = $con2->proxima();
-?>
-				<li>
-		            <div class="details">
-		            	<h3><?php echo $rst["nome"]; ?></h3>
-		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="images/pasta.png" width="290px"/></a>
-		        </li>
-<?php
-	}
-	$con2->fechar();
-?>
-			</ul>
-		</div>
-
-		<div id="container">
-    		Fotos selecionadas: <?php echo $fotos_selecionadas; ?> de <?php echo $total_fotos; ?>
-    		<br>
-    		<br>
-    	</div>
-
-		<div class="container span4 offset4">
-			<a class="btn" href="app/triagem.php?operacao=1">Efetuar triagem</a>
-			<a href="finalizar_triagem.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn">Finalizar triagem</a>
-		</div>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Após esta ação você não poderá mais acessar o sistema!<br>Finalizar triagem?</span></h2>
+            <br><br>
+        </div>
+		
+        <div class="container">
+            <form action="app/bloquear_acesso.php" method="post">
+                <input type="hidden" name="acesso" value='<?php echo $id; ?>' />
+                <input type="hidden" name="solicitante" value='0' />
+                <button type="submit" class="btn btn-default">Sim</button>
+                <a href="cliente.php" class="btn btn-default">Não</a>
+            </form>
+        
+        </div>
+        
     </body>
 </html>

@@ -22,10 +22,14 @@ if ($email == "admin" and $senha == "admin") {
 	if($qtde > 0) {
 		$rst = $con->proxima();
 		$con->fechar();
-		session_start();
-		$_SESSION["user_id"] = $rst["id"];
-		$_SESSION["user_nome"] = $rst["nome"];
-		header("Location:../cliente.php");
+		if($rst["acesso"] == 1){
+			session_start();
+			$_SESSION["user_id"] = $rst["id"];
+			$_SESSION["user_nome"] = $rst["nome"];
+			header("Location:../cliente.php");
+		} else{
+			header("Location:../bloqueado.html");
+		}
 	} else {
 		header("Location:../index.html");
 	}	
