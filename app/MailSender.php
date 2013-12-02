@@ -39,10 +39,10 @@ class MailSender {
         $mail->Host = "smtp.gmail.com";
         $mail->Port = "587";
         $mail->SMTPAuth = "true";
-        $mail->Username = "jonas.jmsantos@gmail.com";
-        $mail->Password = "N@daesperfect0";
-        $mail->From = "jonas.jmsantos@gmail.com";
-        $mail->FromName = "REMETENTE";
+        $mail->Username = "testetriagemlife@gmail.com";
+        $mail->Password = "senhaaaa";
+        $mail->From = "testetriagemlife@gmail.com";
+        $mail->FromName = "Life";
         $mail->AddAddress($this->destino);
         $mail->Subject = $this->assunto;
         $mail->Body = $this->mensagem;

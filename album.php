@@ -103,7 +103,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">sair</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
