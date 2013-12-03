@@ -24,6 +24,10 @@ class AlterarSenha{
 		$this->novasenha = $senha;
 	}
 
+	public function getId(){
+		return $this->id_cliente;
+	}
+
 	public function getTempHash(){
 		return $this->temphash;
 	}
@@ -62,11 +66,32 @@ class AlterarSenha{
 	}
 
 	public function atualizarSenha(){
-		$con = new Conexao;
-		$con->criar();
-		$con->selecionar();
-		$con->executar("UPDATE cliente SET senha = $this->novohash WHERE id = $this->id_cliente");
-		$con->fechar();
+		$con2 = new Conexao;
+		$con2->criar();
+		$con2->selecionar();
+		$con2->executar("UPDATE cliente SET senha = '$this->novohash' WHERE id = '$this->id_cliente';");
+		$con2->fechar();
+	}
+
+	public function enviarEmail(){
+		$con3 = new Conexao;
+		$email = new MailSender;
+		
+		$con3->criar();
+		$con3->selecionar();
+		$con3->executar("SELECT nome, email FROM cliente WHERE id = '$this->id_cliente';");
+		$rst3 = $con3->proxima();
+		$con3->fechar();
+
+		$emailDest = (string)$rst3["email"];
+		$nomeDest = (string)$rst3["nome"];
+		$email->setDestino($emailDest);
+		$email->setAssunto("Life Triagem de Fotos - senha alterada");
+		$email->setMensagem("Prezado(a) $nomeDest,<br><br>A senha de sua conta em 
+			http://triagem.eventoslife.com.br foi alterada! Confira as novas informações 
+			de acesso:<br><br>Nome de usuário: $emailDest<br>Senha: $this->novasenha
+			<br><br>Atenciosamente,<br>Life Triagem de Fotos.");
+		$email->enviarMensagem();
 	}
 
 }
@@ -77,13 +102,17 @@ $as->setSenha($_POST["oldpass"]);
 $as->setNovaSenha($_POST["renewpass"]);
 $as->gerarHash();
 $as->verificaSenhaAntiga();
+//header("Location: ../teste.php?id=".$as->getId()."&um=".$as->getTempHash()."&dois=".$as->getHash());
+//header("Location: ../editar_album.php?id=".$ea->getId()."&nome=".$ea->getNomeCliente());
+
 if(strcmp($as->getTempHash(), $as->getHash()) == 0){
 	$as->gerarNovoHash();
 	$as->atualizarSenha();
+	$as->enviarEmail();
 	header("Location: ../alterar_senha_sucesso.html");
 }
 else{
-	header("Location: ../alterar_senha_erro.html");
+	header("Location: ../alterar_senha_erro.php");
 }
 
 ?>

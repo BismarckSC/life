@@ -1,6 +1,6 @@
 DELIMITER |
-CREATE PROCEDURE cadastro_cliente(app_nome VARCHAR(30), app_email VARCHAR(20),  
-  app_senha VARCHAR(16), app_evento VARCHAR(100), app_descricao VARCHAR(1000), app_n_fotos INT)
+CREATE PROCEDURE cadastro_cliente(app_nome VARCHAR(60), app_email VARCHAR(50),  
+  app_senha VARCHAR(32), app_evento VARCHAR(100), app_descricao VARCHAR(1000), app_n_fotos INT)
 
 BEGIN
     DECLARE teste VARCHAR(20);
@@ -18,7 +18,7 @@ END
 
 |
 
-CREATE PROCEDURE cadastro_admin(app_email VARCHAR(20), app_senha VARCHAR(16))
+CREATE PROCEDURE cadastro_admin(app_email VARCHAR(50), app_senha VARCHAR(32))
 
 BEGIN
     DECLARE teste VARCHAR(20);
@@ -34,11 +34,11 @@ END
 
 |
 
-CREATE PROCEDURE login(app_email VARCHAR(20), app_senha VARCHAR(16))
+CREATE PROCEDURE login(app_email VARCHAR(50), app_senha VARCHAR(32))
 
 BEGIN
 
-    DECLARE teste VARCHAR(20);    
+    DECLARE teste VARCHAR(50);    
     
     SELECT email INTO teste FROM admin WHERE app_email = email;
     IF teste IS NULL THEN    

@@ -33,8 +33,8 @@ if ($email == "admin" and $senha == "admin") {
 	} else {
 		header("Location:../index.html");
 	}	
-	$con->fechar();
+	//$con->fechar();
 	
-	session_start();
+	//session_start();
 }
 ?>

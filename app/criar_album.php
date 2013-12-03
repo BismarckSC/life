@@ -79,7 +79,12 @@ class CriarAlbum {
 
 		$email->setDestino($this->email);
 		$email->setAssunto("Bem-vindo ao Life Triagem de Fotos!");
-		$email->setMensagem("Senha: $this->senha");
+		$email->setMensagem("Prezado(a) $this->nome,<br><br>As fotos do evento \"$this->evento\" 
+			estão disponíveis em nosso sistema de triagem para que sejam escolhidas quais irão 
+			compor seu álbum. Acesse nosso sistema em http://triagem.eventoslife.com.br .
+			<br><br>Informações de acesso:<br>Nome de usuário: $this->email<br>Senha: $this->senha<br><br>
+			Você pode alterar a senha para uma desejada a qualquer momento, assim que acessar nosso site.
+			<br><br>Atenciosamente,<br>Life Triagem de Fotos.");
 		$email->enviarMensagem();
 	}
 }
