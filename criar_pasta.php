@@ -4,6 +4,15 @@
 	session_start();
 	$id = $_SESSION["c_album_id"];
 	
+	$con1 = new Conexao;
+	$con1->criar();
+	$con1->selecionar();
+	$con1->executar("SELECT * FROM cliente WHERE id = '$id';");
+	$rst1 = $con1->proxima();
+	$con1->fechar();
+	
+	$nome = $rst1["nome"];
+	
 	$con = new Conexao;
 	
 	$con->criar();
@@ -104,6 +113,7 @@
 			</form>	
 			<br>
 			<a href="admin.html" class="btn btn-default">Finalizar</a>
+			<a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Cancelar</a>
         </div>
     </body>
 </html>
