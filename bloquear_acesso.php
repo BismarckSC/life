@@ -57,7 +57,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="">sair</a>
+            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -76,6 +76,7 @@
         <div class="container">
             <form action="app/bloquear_acesso.php" method="post">
                 <input type="hidden" name="acesso" value='<?php echo $id; ?>' />
+                <input type="hidden" name="solicitante" value='1' />
                 <button type="submit" class="btn btn-default">Sim</button>
                 <a href="editar_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Não</a>
             </form>

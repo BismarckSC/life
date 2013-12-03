@@ -1,20 +1,8 @@
 <?php
-    include 'app/conexao.php';
+	session_start();
 
-    session_start();
-    //$id = $_SESSION["e_album_id"];
-    $id = $_GET["id"];
-    $nome = $_GET["nome"];
-    $_SESSION["e_album_id"] = $id;
-    $_SESSION["e_album_nome_cliente"] = $nome;
-    
-    $con = new Conexao;
-    
-    $con->criar();
-    $con->selecionar();
-    $con->executar("SELECT evento FROM cliente WHERE id = '$id';");
-    $rst = $con->proxima();
-    $con->fechar();
+	$nome = $_SESSION["user_nome"];
+	$id = $_SESSION["user_id"];
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +14,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Life - Triagem de fotos (Administrador)</title>
+        <title>Life - Triagem de fotos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -35,11 +23,12 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style1.css" />
 		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/reset.css" media="screen" />
 		<link rel="stylesheet" href="css/style.css" media="screen" />
-        <link rel="stylesheet" href="css/css3_3d.css" media="screen" />
+		<link rel="stylesheet" href="css/css3_3d.css" media="screen" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/modernizr.js"></script>
 
@@ -53,15 +42,15 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="admin.html">
+            <a href="">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="app/logout.php">sair</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="alterar_senha.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>">alterar senha</a>|<a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
-        
+
         <div class="container">
             <h1 id="logo">
             <img src="images/life_logo.png"/>
@@ -69,15 +58,16 @@
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir álbum "<?php echo $rst['evento']; ?>"?</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Após esta ação você não poderá mais acessar o sistema!<br>Finalizar triagem?</span></h2>
             <br><br>
         </div>
 		
         <div class="container">
-            <form action="app/excluir_album.php" method="post">
-                <input type="hidden" name="album" value='<?php echo $id; ?>' />
+            <form action="app/bloquear_acesso.php" method="post">
+                <input type="hidden" name="acesso" value='<?php echo $id; ?>' />
+                <input type="hidden" name="solicitante" value='0' />
                 <button type="submit" class="btn btn-default">Sim</button>
-                <a href="editar_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Não</a>
+                <a href="cliente.php" class="btn btn-default">Não</a>
             </form>
         
         </div>
