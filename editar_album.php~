@@ -94,7 +94,7 @@
             
                     <tr>
                     <!--<form class="form-horizontal" role="form">-->
-                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos_2.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar fotos</a></td><td><a href="excluir_fotos.php?id=<?php echo $rst['id']; ?>&unome=<?php echo $nome; ?>&nome=<?php echo $rst['nome']; ?>&pag=1" class="btn btn-small">Excluir fotos</a></td><td><a href="excluir_pasta.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Excluir pasta</a></td>
+                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos_2.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar fotos</a></td><td><a href="excluir_fotos.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1" class="btn btn-small">Excluir fotos</a></td><td><a href="excluir_pasta.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Excluir pasta</a></td>
                     <!--</form>-->
                     </tr>
             

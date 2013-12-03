@@ -122,7 +122,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 #grid .details2 a.more:hover { background-color: #0090e2; color: #fff; }
 
 /* EXCLUIDA DETAILS*/
-#grid .details3 { position: absolute; bottom: 0; background: #fff; background: rgba(255, 50, 50, 0.87); border-top: 1px solid #fff; width: 270px; border-bottom: 1px solid rgba(0, 0, 0, 0.25); padding: 10px;
+#grid .details3 { position: absolute; bottom: 0; background: #fff; background: rgba(255, 240, 83, 0.87); border-top: 1px solid #fff; width: 270px; border-bottom: 1px solid rgba(0, 0, 0, 0.25); padding: 10px;
 	-webkit-border-radius:  0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;

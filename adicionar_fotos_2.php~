@@ -14,7 +14,7 @@
 	$con->fechar();
 	
 	session_start();
-	
+
 	$_SESSION["c_pasta_id"] = $id;
     $_SESSION["c_pasta_nome"] = $nome;
 ?>
@@ -92,8 +92,6 @@
 			$idCliente = $rst["id"];
 			$nome = $rst["nome"];
 			$con->fechar();
-			
-			$_SESSION["c_album_id"] = $idCliente;
 		?>
 
         <div class="container">
