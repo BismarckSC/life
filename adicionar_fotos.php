@@ -77,6 +77,10 @@
         <div id="container">
         	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Adicionar fotos à pasta "<?php echo $nome; ?>"</span></h2>
     	</div>
+    	<br>
+    	<div class="container">
+			<a class="btn" href="criar_pasta.php">Voltar</a>
+        </div>
 		
 		<div id="dropbox">
 			<span class="message">Arraste e solte as imagens aqui.</span>

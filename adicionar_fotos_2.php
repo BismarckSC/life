@@ -79,10 +79,6 @@
         	<h2 class="title"><span>Sistema de Triagem de Fotos<br>Adicionar fotos à pasta "<?php echo $nome; ?>"</span></h2>
     	</div>
 		
-		<div id="dropbox">
-			<span class="message">Arraste e solte as imagens aqui.</span>
-		</div>
-        
 		<?php
 			$con->criar();
 			$con->selecionar();
@@ -95,6 +91,28 @@
 			
 			$_SESSION["c_album_id"] = $idCliente;
 		?>
+
+		<br>
+		<div class="container">
+			<a class="btn" href="editar_album.php?id=<?php echo $idCliente; ?>&nome=<?php echo $rst['nome']; ?>">Voltar</a>
+        </div>
+
+		<div id="dropbox">
+			<span class="message">Arraste e solte as imagens aqui.</span>
+		</div>
+        
+		<!--<?php
+			$con->criar();
+			$con->selecionar();
+			$con->executar("SELECT c.id, c.nome FROM cliente c, cliente_pasta WHERE id_pasta = $id AND id_cliente = c.id");
+	
+			$rst = $con->proxima();
+			$idCliente = $rst["id"];
+			$nome = $rst["nome"];
+			$con->fechar();
+			
+			$_SESSION["c_album_id"] = $idCliente;
+		?> -->
 
         <div class="container">
 			<a class="btn" href="editar_album.php?id=<?php echo $idCliente; ?>&nome=<?php echo $rst['nome']; ?>">Voltar</a>

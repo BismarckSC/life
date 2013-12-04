@@ -1,0 +1,7 @@
+**RELATÓRIO DE TRIAGEM DE FOTOS**
+
+Cliente: Jonas Santos
+
+Pasta: grila		Foto: 20.jpg
+Pasta: teste		Foto: 11.jpg
+Pasta: teste		Foto: 13.jpg
