@@ -7,14 +7,6 @@
     $nome = $_GET["nome"];
     $_SESSION["e_album_id"] = $id;
     $_SESSION["e_album_nome_cliente"] = $nome;
-    
-    $con = new Conexao;
-    
-    $con->criar();
-    $con->selecionar();
-    $con->executar("SELECT evento FROM cliente WHERE id = '$id';");
-    $rst = $con->proxima();
-    $con->fechar();
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +61,7 @@
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir álbum "<?php echo $rst['evento']; ?>"?</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir álbum de <?php echo $nome; ?>?</span></h2>
             <br><br>
         </div>
 		

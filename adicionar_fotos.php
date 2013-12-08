@@ -81,6 +81,8 @@
     	<div class="container">
 			<a class="btn" href="criar_pasta.php">Voltar</a>
         </div>
+
+        <!-- AQUI UPLOADER MANUAL! -->
 		
 		<div id="dropbox">
 			<span class="message">Arraste e solte as imagens aqui.</span>

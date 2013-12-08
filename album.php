@@ -163,32 +163,35 @@
 				<li id="imagem<?php echo $i; ?>">
             	<div>
                		<img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" />
-                    <a href="#" class="close">x</a>
+                    <a href="#" class="close">Fechar</a>
+                    <center>
                     <?php if($i > 0) { ?>
-                    	<a href="#imagem<?php echo $i - 1; ?>" class="more"><</a>
+                    	<a href="#imagem<?php echo $i - 1; ?>" class="btn btn-small :hover"><</a>
                     <?php }
 						if($rst['selecionada'] == 0) {
 					?>
-				            <a class="more" id="mar1<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
-				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+				            <a class="btn btn-info" id="mar1<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="btn btn-info" id="desmar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 				    <?php
 						} else {
 					?>
-				        	<a class="more" id="mar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
-				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+				        	<a class="btn btn-info" id="mar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="btn btn-info" id="desmar1<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 					<?php
 						}
 						if($i < $qtde - 1) { 
 					?>
-                    	<a href="#imagem<?php echo $i + 1; ?>" class="more">></a>
+                    	<a href="#imagem<?php echo $i + 1; ?>" class="btn btn-small :hover">></a>
                     <?php } ?>
+                    </center>
             	</div>
 				<span class="backface"></span>
+				</li>
 <?php
 	}
 	$con->fechar();
 ?>
-			</li>
+			
 			</ul>
 		</div>
 		<div class="container">

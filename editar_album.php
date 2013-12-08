@@ -67,18 +67,8 @@
             </h1>
         </div>
 
-        <?php
-            $con2 = new Conexao;
-    
-            $con2->criar();
-            $con2->selecionar();
-            $con2->executar("SELECT evento FROM cliente WHERE id = '$id';");
-            $rst2 = $con2->proxima();
-        ?>
-
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Editar álbum "<?php echo $rst2['evento']; ?>"</span></h2>
-        <?php $con2->fechar(); ?>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Editar álbum de <?php echo $nome; ?></span></h2>
             <br><br>
     		<label>Pastas:</label>
             <br>

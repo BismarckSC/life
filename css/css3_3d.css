@@ -169,7 +169,7 @@ li[id] { overflow: hidden; position: absolute; width: 0; height: 0; left: 0; top
 }
 /* 
 Lightbox close button */
-li[id] div a.close { background: #000; position: absolute; top: -10px; left: -10px; line-height: 0; color: #fff; text-align: center; font-weight: bold; border: 2px solid #fff; padding: 12px 9px 9px; border-radius: 30px;
+li[id] div a.close { background: #000; position: absolute; top: -27px; left: -1px; line-height: 0; color: #fff; text-align: center; font-weight: bold; border: 2px solid #fff; padding: 12px 9px 9px; border-radius: 30px;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
 	-moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
 	box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
