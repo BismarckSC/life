@@ -9,17 +9,17 @@
 	$pagina = $_GET["pag"];
 	
 	$limite = 15;
-	$off = ($pagina * $qtde) - $qtde;
+	$off = ($pagina * $limite) - $limite;
 
 	$con = new Conexao;
 	$con->criar();
 	$con->selecionar();
 	
-	$con->executar("select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id");
+	$con->executar("select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.excluida <> 1 and f.id = p.id_foto and p.id_pasta = $id");
 	$qtde = $con->qtde();
 	$totalpaginas = ceil($qtde/$limite);
 
-	$q = "select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.id = p.id_foto and p.id_pasta = $id limit $off,$limite;";
+	$q = "select f.nome, f.id, f.selecionada from fotos f, pasta_fotos p where f.excluida <> 1 and f.id = p.id_foto and p.id_pasta = $id limit $off,$limite;";
 	$con->executar($q);
 ?>
 
@@ -97,13 +97,13 @@
 		</script>
 		
     </head>
-    <body>
+    <body onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
     	<div class="codrops-top">
-            <a href="">
+            <a href="cliente.php">
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="">(sair)</a>
+            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -116,9 +116,9 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>- Pasta: <?php echo $album; ?> -</span></h2>
-    		<br>
-    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas; ?>
+    		<h2 class="title"><span>Fotos da pasta "<?php echo $album; ?>"</span></h2>
+    		<!--<br>
+    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas + 1; ?> -->
     	</div>
     	
 		<div id="container">
@@ -163,35 +163,43 @@
 				<li id="imagem<?php echo $i; ?>">
             	<div>
                		<img src="uploads/<?php echo $uid; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" />
-                    <a href="#" class="close">x</a>
+                    <a href="#" class="close">Fechar</a>
+                    <center>
                     <?php if($i > 0) { ?>
-                    	<a href="#imagem<?php echo $i - 1; ?>" class="more"><</a>
+                    	<a href="#imagem<?php echo $i - 1; ?>" class="btn btn-small :hover"><</a>
                     <?php }
 						if($rst['selecionada'] == 0) {
 					?>
-				            <a class="more" id="mar1<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
-				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+				            <a class="btn btn-info" id="mar1<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="btn btn-info" id="desmar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 				    <?php
 						} else {
 					?>
-				        	<a class="more" id="mar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
-				            <a class="more" id="desmar1<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
+				        	<a class="btn btn-info" id="mar1<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
+				            <a class="btn btn-info" id="desmar1<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 					<?php
 						}
 						if($i < $qtde - 1) { 
 					?>
-                    	<a href="#imagem<?php echo $i + 1; ?>" class="more">></a>
+                    	<a href="#imagem<?php echo $i + 1; ?>" class="btn btn-small :hover">></a>
                     <?php } ?>
+                    </center>
             	</div>
 				<span class="backface"></span>
+				</li>
 <?php
 	}
 	$con->fechar();
 ?>
-			</li>
+			
 			</ul>
 		</div>
-		<div class="container span4 offset4">
+		<div class="container">
+		<!--<div class="container" span4 offset4> -->
+			<?php if($totalpaginas > 1){ ?>
+			<br>
+    		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas; ?>
+    		<br><br>
 			<?php if($pagina > 1) { ?>
 			<a type="button" class="btn" href="album.php?id=<?php echo $id; ?>&nome=<?php echo $album; ?>&pag=<?php echo $pagina - 1?>">Anterior</a>
 			<?php } else {?>
@@ -202,6 +210,11 @@
 			<?php } else {?>
 			<a type="button" class="btn" enable="false">Próxima</a>
 			<?php } ?>
+			<?php } ?>
 		</div>
+		<br>
+        <div class="container">
+            <a href="cliente.php" class="btn btn-default">Voltar</a>
+        </div>
     </body>
 </html>

@@ -51,6 +51,7 @@ if ($email == "admin" and $senha == "admin") {
 			header("Location:../bloqueado.html");
 		}
 	} else {
+		//echo $email."<br>".$hash;
 		header("Location:../index.html");
 	}	
 	//$con->fechar();

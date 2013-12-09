@@ -97,7 +97,7 @@
 		</script>
 		
     </head>
-    <body>
+    <body onselectstart="return false" oncontextmenu="return false" ondragstart="return false">
     	<div class="codrops-top">
             <a href="cliente.php">
                 <strong>Inicio</strong>

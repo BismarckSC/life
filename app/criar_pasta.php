@@ -14,14 +14,16 @@ class CriarPasta {
 	}
 	
 	public function criar() {
+		$nome = $this->id . "-" . $this->nome;
+	
 		$con = new Conexao;
 
 		$con->criar();
 		$con->selecionar();
-		$id = $con->cadpasta($this->nome,$this->id);
+		$id = $con->cadpasta($nome,$this->id);
 		$con->fechar();
 		
-		mkdir("../uploads/$this->id/$this->nome", 0777);
+		mkdir("../uploads/$this->id/$nome", 0777);
 	}
 }
 

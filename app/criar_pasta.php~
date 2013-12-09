@@ -21,7 +21,7 @@ class CriarPasta {
 		$id = $con->cadpasta($this->nome,$this->id);
 		$con->fechar();
 		
-		mkdir("../uploads/$this->id/$this->nome", 777);
+		mkdir("../uploads/$this->id/$this->nome", 0777);
 	}
 }
 
