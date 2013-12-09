@@ -96,7 +96,7 @@
 		            	<input type="hidden" name="id" value="<?php echo $id; ?>" />
 		            	<input type="hidden" name="pasta" value="<?php echo $album; ?>" />
 		            	<input type="hidden" name="foto" value="<?php echo $rst['nome']; ?>" />
-		                <a type="submit" class="more">selecionar</a>
+		                <button type="submit" class="more">selecionar</button>
 		                </form>
 		            </div>
 		           <a class="more" href=""><img src="uploads/<?php echo $id; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="290px"/></a>

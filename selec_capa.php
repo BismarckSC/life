@@ -92,12 +92,7 @@
 				<li>
 		            <div class="details" id="div<?php echo $rst['id'] ?>">
 		            	<h3><?php echo $rst['nome']; ?></h3>
-		            	<form method="post" action="app/selecionar_capa.php">
-		            	<input type="hidden" name="id" value="<?php echo $id; ?>" />
-		            	<input type="hidden" name="pasta" value="<?php echo $album; ?>" />
-		            	<input type="hidden" name="foto" value="<?php echo $rst['nome']; ?>" />
-		                <button type="submit" class="more">selecionar</button>
-		                </form>
+		                <a type="submit" class="more" href="app/selecionar_capa.php?id=<?php echo $id; ?>&pasta=<?php echo $album; ?>&foto=<?php echo $rst['nome']; ?>">selecionar</a>
 		            </div>
 		           <a class="more" href=""><img src="uploads/<?php echo $id; ?>/<?php echo $album; ?>/<?php echo $rst['nome']; ?>" width="290px"/></a>
 		        </li>
