@@ -24,7 +24,7 @@ Add the transition affect to the images in the grid. Any changes to the element 
 }
 #grid li.end { margin-right: 0; }
 #grid li:nth-child(3n) { margin-right: 0; }
-#grid li:hover { z-index: 2;
+/*#grid li:hover { z-index: 2;
 	-webkit-transform: scale(1.2) translateY(-40px);	
 	-moz-transform: scale(1.2) translateY(-40px);	
 	-ms-transform: scale(1.2) translateY(-40px);	
@@ -32,23 +32,23 @@ Add the transition affect to the images in the grid. Any changes to the element 
 	-webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
+}*/
 /*
 Rotate left hand column to the left upon hover */
-#grid li:nth-child(3n-2):hover {
+/*#grid li:nth-child(3n-2):hover {
 	-webkit-transform: scale(1.2) translate3d(0, -30px, 0) rotate(-2.5deg);
 	-moz-transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
 	-ms-transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
 	transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
-}
+}*/
 /*
 Rotate every third li with :nth-child(3n) (right hand column in this demo) to the right upon hover */
-#grid li:nth-child(3n):hover {
+/*#grid li:nth-child(3n):hover {
 	-webkit-transform: scale(1.2) translate3d(0, -30px, 0) rotate(2.5deg);	
 	-moz-transform: scale(1.2) translateY(-30px) rotate(2.5deg);	
 	-ms-transform: scale(1.2) translateY(-30px) rotate(2.5deg);	
 	transform: scale(1.2) translateY(-30px) rotate(2.5deg);	
-}
+}*/
 
 #grid img, li[id]:target div, #grid li, .backface {
 	-webkit-border-radius: 5px;
@@ -169,25 +169,25 @@ li[id] { overflow: hidden; position: absolute; width: 0; height: 0; left: 0; top
 }
 /* 
 Lightbox close button */
-li[id] div a.close { background: #000; position: absolute; top: -27px; left: -1px; line-height: 0; color: #fff; text-align: center; font-weight: bold; border: 2px solid #fff; padding: 12px 9px 9px; border-radius: 30px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
-	box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+li[id] div a.close { background: #f00; position: absolute; top: -27px; left: -1px; line-height: 0; color: #fff; text-align: center; font-weight: bold; border: 2px solid #fff; padding: 12px 9px 9px; border-radius: 30px;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 1px 1px 1px;
+	-moz-box-shadow: rgba(0, 0, 0, 1) 1px 1px 1px;
+	box-shadow: rgba(f, 0, 0, 1) 1px 1px 1px;
 }
 
 /* 
 Animation keyframes for the lightbox.
 First line is at 0% so we're setting it to be 5x the actual size and rotate it around the Y axis by -270 degrees
 100% resets it's actual size and resets the rotation back to flat. */
-@-webkit-keyframes lightbox {
+/*@-webkit-keyframes lightbox {
 	0% { -webkit-transform: scale(5) rotateY(-270deg); }
 	100% { -webkit-transform: scale(1) rotateY(0deg); }
-}
+}*/
 
-@-moz-keyframes lightbox {
-	0% { -moz-transform: scale(5) /* rotateY(-270deg) */; }
-	100% { -moz-transform: scale(1) /* rotateY(0deg) */; }
-}
+/*@-moz-keyframes lightbox {
+	0% { -moz-transform: scale(5) /* rotateY(-270deg) *//*; }
+	100% { -moz-transform: scale(1) /* rotateY(0deg) *//*; }
+}*/
 
 /* -------------------------------------------------------------------------------------------------------------------------
 Use Modernizer (http://www.modernizr.com) to display content for browsers that don't support CSS Transforms.

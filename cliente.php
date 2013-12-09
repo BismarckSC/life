@@ -97,14 +97,24 @@
 	$qtde = $con2->qtde();
 	for($i = 0; $i < $qtde; $i++) {
 		$rst = $con2->proxima();
+		
+		$album_id = $rst['id'];
+		
+		$con3 = new Conexao;
+	
+		$con3->criar();
+		$con3->selecionar();
+		$con3->executar("select f.nome from pasta_fotos pf, fotos f where pf.id_foto = f.id and pf.id_pasta = $album_id limit 1;");
+		$rst_con3 = $con3->proxima();
 ?>
 				<li>
 		            <div class="details">
 		            	<h3><?php echo $rst["nome"]; ?></h3>
 		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="images/pasta.png" width="290px"/></a>
+		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="uploads/<?php echo $id; ?>/<?php echo $rst["nome"]; ?>/<?php echo $rst_con3["nome"]; ?>" width="290px"/></a>
 		        </li>
 <?php
+		$con3->fechar();
 	}
 	$con2->fechar();
 ?>

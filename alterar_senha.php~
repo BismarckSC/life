@@ -76,7 +76,7 @@
 					<input type="password" class="form-control" name="renewpass" placeholder="Insira a nova senha">
 				</div>
                 <br>
-                <input type="hidden" name="idcli" value="<?php echo $id; ?>" />
+                <input type="hidden" name="idcli" value='<?php echo $id; ?>' />
 				<button type="submit" class="btn btn-default">Salvar</button>
                 <a href="cliente.php" class="btn btn-default">Cancelar</a>
 			</form>			

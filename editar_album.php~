@@ -56,7 +56,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="">sair</a>
+            	Seja Bem-Vindo <strong>ADMINISTRADOR</strong>! <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -67,18 +67,8 @@
             </h1>
         </div>
 
-        <?php
-            $con2 = new Conexao;
-    
-            $con2->criar();
-            $con2->selecionar();
-            $con2->executar("SELECT evento FROM cliente WHERE id = '$id';");
-            $rst2 = $con2->proxima();
-        ?>
-
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Editar álbum "<?php echo $rst2['evento']; ?>"</span></h2>
-        <?php $con2->fechar(); ?>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Editar álbum de <?php echo $nome; ?></span></h2>
             <br><br>
     		<label>Pastas:</label>
             <br>
@@ -94,7 +84,7 @@
             
                     <tr>
                     <!--<form class="form-horizontal" role="form">-->
-                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos_2.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar fotos</a></td><td><a href="excluir_fotos.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1" class="btn btn-small">Excluir fotos</a></td><td><a href="excluir_pasta.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Excluir pasta</a></td>
+                    <td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos_2.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar fotos</a></td><td><a href="excluir_fotos.php?id=<?php echo $rst['id']; ?>&unome=<?php echo $nome; ?>&nome=<?php echo $rst['nome']; ?>&pag=1" class="btn btn-small">Excluir fotos</a></td><td><a href="excluir_pasta.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Excluir pasta</a></td>
                     <!--</form>-->
                     </tr>
             
@@ -122,8 +112,9 @@
             </form> 
             <br>
 			<a href="editar_infos.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Editar informações</a>
+			<a href="selec_capa.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Selecionar capa</a>
             <a href="bloquear_acesso.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Bloquear acesso</a>
-            <a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir álbum</a>
+            <a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>&pag=1" class="btn btn-default">Excluir álbum</a>
         </div>
         <br><br>
         <div class="container">

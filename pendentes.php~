@@ -1,8 +1,7 @@
 <?php
     session_start();
-    include 'app/conexao.php';   
+    include 'app/conexao.php';
 ?>
-
 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
@@ -57,14 +56,14 @@
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Triagens finalizadas</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Triagens em andamento</span></h2>
 			<ul id="grid" class="group">
-		        <?php
+                <?php
                     $con = new Conexao;
     
                     $con->criar();
                     $con->selecionar();
-                    $con->executar("SELECT id, nome, evento, capa FROM cliente WHERE acesso = 0 ORDER BY nome;");
+                    $con->executar("SELECT id, nome, evento, capa FROM cliente WHERE acesso = 1 ORDER BY nome;");
                     $qtde = $con->qtde();
                     for($i = 0; $i < $qtde; $i++) {
                         $rst = $con->proxima();
@@ -83,10 +82,10 @@
                         }
                 ?>
                 <li>
-                    <div class="details1">
+                    <div class="details2">
                         <h3><?php echo $rst["nome"]; ?></h3>
                     </div>
-                   <a class="more" href="final.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="<?php echo $capa; ?>" width="290px"/></a>
+                   <a class="more" href="editar_album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="<?php echo $capa; ?>" width="290px"/></a>
                 </li>
                 <?php
                     }

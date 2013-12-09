@@ -112,7 +112,12 @@ if(strcmp($as->getTempHash(), $as->getHash()) == 0){
 	header("Location: ../alterar_senha_sucesso.html");
 }
 else{
-	header("Location: ../alterar_senha_erro.php");
+	echo $_POST["oldpass"];
+	echo "</br>";
+	echo $as->getTempHash();
+	echo "</br>";
+	echo $as->getHash();
+	//header("Location: ../alterar_senha_erro.php");
 }
 
 ?>

@@ -1,11 +1,6 @@
 <?php
     session_start();
     include 'app/conexao.php';
-
-    $nome = $_SESSION["user_nome"];
-    $id = $_SESSION["user_id"];
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +17,6 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="author" content="Dark Horses" />
-        <link rel="shortcut icon" href="../favicon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
@@ -68,16 +62,29 @@
     
                     $con->criar();
                     $con->selecionar();
-                    $con->executar("SELECT id, nome, evento FROM cliente WHERE acesso = 1 ORDER BY nome;");
+                    $con->executar("SELECT id, nome, evento, capa FROM cliente WHERE acesso = 1 ORDER BY nome;");
                     $qtde = $con->qtde();
                     for($i = 0; $i < $qtde; $i++) {
                         $rst = $con->proxima();
+                        
+                        if($rst["capa"] == 'none') {
+                        	$cliente = $rst["id"];
+                        	$con1 = new Conexao;
+							$con1->criar();
+							$con1->selecionar();
+							$con1->executar("SELECT p.nome pasta, f.nome foto FROM cliente_pasta cp, pasta p, pasta_fotos pf, fotos f WHERE cp.id_cliente = $cliente and cp.id_pasta = p.id and p.id = pf.id_pasta and pf.id_foto = f.id limit 1;");							
+							$rst1 = $con1->proxima();
+							$capa = "uploads/" . $cliente . "/" . $rst1["pasta"] . "/" . $rst1["foto"];
+                        } else {
+                        	$cliente = $rst["id"];
+                        	$capa = "uploads/" . $cliente . "/" . $rst["capa"];
+                        }
                 ?>
                 <li>
                     <div class="details2">
                         <h3><?php echo $rst["nome"]; ?></h3>
                     </div>
-                   <a class="more" href="editar_album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="images/pasta.png" width="290px"/></a>
+                   <a class="more" href="editar_album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>"><img src="<?php echo $capa; ?>" width="290px"/></a>
                 </li>
                 <?php
                     }

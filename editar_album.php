@@ -112,6 +112,7 @@
             </form> 
             <br>
 			<a href="editar_infos.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Editar informações</a>
+			<a href="selec_capa.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>&pag=1" class="btn btn-default">Selecionar capa</a>
             <a href="bloquear_acesso.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Bloquear acesso</a>
             <a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Excluir álbum</a>
         </div>

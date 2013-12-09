@@ -6,7 +6,27 @@ $email = $_POST["email"];
 $senha = $_POST["senha"];
 
 if ($email == "admin" and $senha == "admin") {
-	header("Location:../admin.html");
+	$hashClass = new HashCodeGenerator;
+	$hash = $hashClass->generateNewHash($senha);
+
+	$con = new Conexao;
+
+	$con->criar();
+	$con->selecionar();
+	$con->login($email,$hash);
+	
+	$qtde = $con->qtde();
+	
+	if($qtde > 0) {
+		$rst = $con->proxima();
+		$con->fechar();
+		header("Location:../admin.html");
+	} else {
+		header("Location:../index.html");
+	}	
+	
+	
+	
 } else {
 	$hashClass = new HashCodeGenerator;
 	$hash = $hashClass->generateNewHash($senha);
