@@ -58,6 +58,10 @@
 					$(".close").text("Back to top");
 				});
 			}
+
+			var userAgent = navigator.userAgent.toLowerCase();
+			if( userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i)!= -1 )
+				location.href="cliente_mobile.php";
 		</script>
     </head>
     <body>
