@@ -42,13 +42,7 @@
         <link rel="shortcut icon" href="../favicon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/style1.css" />
-		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="css/reset.css" media="screen" />
-		<link rel="stylesheet" href="css/style.css" media="screen" />
-		<link rel="stylesheet" href="css/css3_3d.css" media="screen" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/modernizr.js"></script>
 
@@ -61,17 +55,11 @@
 		</script>
     </head>
     <body>
-    	<div class="codrops-top">
-            <a href="">
-                <strong>Inicio</strong>
-            </a>
-            <span class="right">
-            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="alterar_senha.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>">alterar senha</a>|<a href="app/logout.php">sair</a>
-            </span>
-            <div class="clr"></div>
+    	<div class="well">
+            Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>!|<a href="app/logout.php">sair</a>
         </div>
         
-        <div class="container">
+        <div class="container" align="center">
             <h1 id="logo">
             <a href="cliente.php">
             <img src="images/life_logo.png"/>
@@ -79,15 +67,15 @@
             </h1>
         </div>
 
-        <div id="container">
+        <div class="container" align="center">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
     		<h2 class="title"><span>Pastas do álbum do evento "<?php echo $rst["evento"]; ?>"</span></h2>
     		<!--<font size="8"><span>Evento:</span><?php echo $rst["evento"]; ?></font>-->
     		<p style="width: 610px; padding: 20px 30px 0 30px; margin: 0 auto; text-align: center;"><?php echo $rst["descricao"]; ?></p>
     	</div>
     	
-		<div id="container">
-			<ul id="grid" class="group">
+		<div class="container">
+			<ul class="thumbnails">
 <?php
 	$con2 = new Conexao;
 	
@@ -107,11 +95,11 @@
 		$con3->executar("select f.nome from pasta_fotos pf, fotos f where pf.id_foto = f.id and pf.id_pasta = $album_id limit 1;");
 		$rst_con3 = $con3->proxima();
 ?>
-				<li>
-		            <div class="details">
-		            	<h3><?php echo $rst["nome"]; ?></h3>
-		            </div>
-		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="uploads/<?php echo $id; ?>/<?php echo $rst["nome"]; ?>/<?php echo $rst_con3["nome"]; ?>" width="290px"/></a>
+				<li class="span4">
+		           <a class="thumbnail" href="album_mobile.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1">
+		           		<img src="uploads/<?php echo $id; ?>/<?php echo $rst["nome"]; ?>/<?php echo $rst_con3["nome"]; ?>" width="290px"/>
+		           		<h3><?php echo $rst["nome"]; ?></h3>
+		           </a>
 		        </li>
 <?php
 		$con3->fechar();
@@ -127,10 +115,10 @@
     		<br>
     	</div>
 
-		<div class="container">
-			<a class="btn" href="app/triagem.php?operacao=2">Resetar triagem</a>
-			<a class="btn" href="app/triagem.php?operacao=1">Efetuar triagem</a>
-			<a href="confirmar_final.php" class="btn">Finalizar triagem</a>
+		<div class="container" align="center">
+			<p><a class="btn btn-large" href="app/triagem.php?operacao=2">Resetar triagem</a></p>
+			<p><a class="btn btn-large" href="app/triagem.php?operacao=1">Efetuar triagem</a></p>
+			<p><a href="confirmar_final.php" class="btn btn-large">Finalizar triagem</a></p>
 		</div>
     </body>
 </html>

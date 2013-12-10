@@ -93,6 +93,7 @@
 		 	</ul>
         </div>
         <div class="container">
+        	 <a href="app/enviar_not.php" class="btn btn-default">Enviar Notificações</a>
             <a href="admin.html" class="btn btn-default">Voltar</a>
         </div>
     </body>

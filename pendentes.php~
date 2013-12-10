@@ -17,7 +17,6 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="author" content="Dark Horses" />
-        <link rel="shortcut icon" href="../favicon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> 
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
