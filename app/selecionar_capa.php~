@@ -20,8 +20,6 @@ class SelecionarCapa {
 		$q = "UPDATE cliente SET capa = '$capa' WHERE id = $id;";
 		$con->executar($q);
 		$con->fechar();
-		
-		echo $q . "</br>" . $id;
 	}
 }
 
@@ -31,5 +29,5 @@ $sc = new SelecionarCapa;
 $sc->setCapa($_POST["id"],$_POST["pasta"],$_POST["foto"]);
 $sc->selecionar();
 
-//header("Location:../pendentes.php");
+header("Location:../pendentes.php");
 ?>

@@ -26,7 +26,7 @@ class SelecionarCapa {
 
 
 $sc = new SelecionarCapa;
-$sc->setCapa($_POST["id"],$_POST["pasta"],$_POST["foto"]);
+$sc->setCapa($_GET["id"],$_GET["pasta"],$_GET["foto"]);
 $sc->selecionar();
 
 header("Location:../pendentes.php");
