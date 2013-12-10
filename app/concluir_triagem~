@@ -1,7 +1,6 @@
 <?php
 
 include 'conexao.php';
-include 'MailSender.php';
 
 class BloquearAcesso{
 
@@ -31,15 +30,6 @@ class BloquearAcesso{
 	public function getQuem(){
 		return $this->solicitadoPor;
 	}
-	
-	public function enviarEmail($nome){
-		$email = new MailSender;
-
-		$email->setDestino("bismarck.sc@gmail.com");
-		$email->setAssunto("Triagem Finalizada!");
-		$email->setMensagem("O cliente $nome concluiu a triagem de fotos.");
-		$email->enviarMensagem();
-	}
 }
 
 session_start();
@@ -53,7 +43,6 @@ if($ba->getQuem() == 1){
 	header("Location: ../admin.html");
 }
 else if($ba->getQuem() == 0){
-	$ba->enviarEmail($_POST["nome"]);
 	header("Location: logout.php");
 }
 ?>
