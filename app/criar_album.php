@@ -31,15 +31,6 @@ class CriarAlbum {
 	public function setdescricao($descricao) {
 		$this->descricao = $descricao;
 	}
-	
-	// protected function gerarsenha() {
-	// 	$alfabeto = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-	// 	$this->senha = "        ";
-	// 	for ($i = 0; $i < 8; $i++) {
-	// 	    $n = rand(0, count($alfabeto)-1);
-	// 	    $this->senha[$i] = $alfabeto[$n];
-	// 	}
-	// }
 
 	public function gerarsenha(){
 		$senha = new RandomKeyGenerator;

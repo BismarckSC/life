@@ -127,10 +127,10 @@
     		<br>
     	</div>
 
-		<div class="container span4 offset4">
+		<div class="container">
 			<a class="btn" href="app/triagem.php?operacao=2">Resetar triagem</a>
 			<a class="btn" href="app/triagem.php?operacao=1">Efetuar triagem</a>
-			<a href="finalizar_triagem.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn">Finalizar triagem</a>
+			<a href="confirmar_final.php" class="btn">Finalizar triagem</a>
 		</div>
     </body>
 </html>
