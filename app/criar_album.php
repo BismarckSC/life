@@ -4,7 +4,6 @@
  */
 
 include 'conexao.php';
-include 'MailSender.php';
 include 'RandomKeyGenerator.php';
 include 'HashCodeGenerator.php';
 
@@ -58,20 +57,7 @@ class CriarAlbum {
 		session_start();
 		$_SESSION["c_album_id"] = $id;
 		mkdir("../uploads/$id", 0777);
-	}
-
-	public function enviarEmail(){
-		$email = new MailSender;
-
-		$email->setDestino($this->email);
-		$email->setAssunto("Bem-vindo ao Life Triagem de Fotos!");
-		$email->setMensagem("Prezado(a) $this->nome,<br><br>As fotos do evento \"$this->evento\" 
-			estão disponíveis em nosso sistema de triagem para que sejam escolhidas quais irão 
-			compor seu álbum. Acesse nosso sistema em http://triagem.eventoslife.com.br .
-			<br><br>Informações de acesso:<br>Nome de usuário: $this->email<br>Senha: $this->senha<br><br>
-			Você pode alterar a senha para uma desejada a qualquer momento, assim que acessar nosso site.
-			<br><br>Atenciosamente,<br>Life Triagem de Fotos.");
-		$email->enviarMensagem();
+		$_SESSION["c_senha"] = $this->senha;
 	}
 }
 
@@ -81,7 +67,6 @@ $ca->setemail($_POST["txtemail"]);
 $ca->setevento($_POST["txtevento"]);
 $ca->setdescricao($_POST["txtdesc"]);
 $ca->criar();
-$ca->enviarEmail();
 
 header("Location:../criar_pasta.php");
 ?>

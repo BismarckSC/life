@@ -5,7 +5,8 @@ include 'HashCodeGenerator.php';
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
-if ($email == "admin" and $senha == "admin") {
+//if ($email == "admin" and $senha == "admin") {
+if ($email == "admin") {
 	$hashClass = new HashCodeGenerator;
 	$hash = $hashClass->generateNewHash($senha);
 

@@ -3,6 +3,7 @@
 
 	session_start();
 	$id = $_SESSION["c_album_id"];
+	$senha = $_SESSION["c_senha"];
 	
 	$con1 = new Conexao;
 	$con1->criar();
@@ -110,10 +111,13 @@
 			<form class="form-horizontal" role="form" method="post" action="app/criar_pasta.php">
 				<input type="text" class="form-control" name="txtnome" placeholder="Insira o nome da pasta">
 				<button type="submit" class="btn btn-default">Criar Pasta</button>
-			</form>	
+			</form>
 			<br>
-			<a href="admin.html" class="btn btn-default">Finalizar</a>
-			<a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Cancelar</a>
+			<form method="post" action="app/email_novo_album.php">
+				<input type="hidden" name="cliente" value="<?php echo $id; ?>" >
+				<button type="submit" class="btn btn-default">Finalizar</button>
+				<a href="excluir_album.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Cancelar</a>
+			</form>			
         </div>
     </body>
 </html>

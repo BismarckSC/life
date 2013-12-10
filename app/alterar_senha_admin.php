@@ -1,11 +1,11 @@
 <?php
 include 'conexao.php';
-include 'MailSender.php';
+//include 'MailSender.php';
 include 'HashCodeGenerator.php';
 
-class AlterarSenha{
+class AlterarSenhaAdmin{
 
-	protected $id_cliente;
+	protected $id_admin;
 	protected $senha;
 	protected $hash;
 	protected $temphash;
@@ -13,7 +13,7 @@ class AlterarSenha{
 	protected $novohash;
 
 	public function setId($id){
-		$this->id_cliente = $id;
+		$this->id_admin = $id;
 	}
 
 	public function setSenha($senha){
@@ -25,7 +25,7 @@ class AlterarSenha{
 	}
 
 	public function getId(){
-		return $this->id_cliente;
+		return $this->id_admin;
 	}
 
 	public function getTempHash(){
@@ -52,7 +52,7 @@ class AlterarSenha{
 		$con = new Conexao;
 		$con->criar();
 		$con->selecionar();
-		$con->executar("SELECT senha FROM cliente WHERE id = $this->id_cliente;");
+		$con->executar("SELECT senha FROM admin WHERE id = $this->id_admin;");
 		$rst = $con->proxima();
 		$this->hash = $rst["senha"];
 		$con->fechar();
@@ -62,25 +62,18 @@ class AlterarSenha{
 		$con2 = new Conexao;
 		$con2->criar();
 		$con2->selecionar();
-		$con2->executar("UPDATE cliente SET senha = '$this->novohash' WHERE id = '$this->id_cliente';");
+		$con2->executar("UPDATE admin SET senha = '$this->novohash' WHERE id = '$this->id_admin';");
 		$con2->fechar();
 	}
 
 	public function enviarEmail(){
-		$con3 = new Conexao;
 		$email = new MailSender;
-		
-		$con3->criar();
-		$con3->selecionar();
-		$con3->executar("SELECT nome, email FROM cliente WHERE id = '$this->id_cliente';");
-		$rst3 = $con3->proxima();
-		$con3->fechar();
 
-		$emailDest = (string)$rst3["email"];
-		$nomeDest = (string)$rst3["nome"];
-		$email->setDestino($emailDest);
+		$emailDest = "";
+		$nomeDest = "Administrador";
+		$email->setDestino("");
 		$email->setAssunto("Life Triagem de Fotos - senha alterada");
-		$email->setMensagem("Prezado(a) $nomeDest,<br><br>A senha de sua conta em 
+		$email->setMensagem("Prezado $nomeDest,<br><br>A senha de sua conta em 
 			http://triagem.eventoslife.com.br foi alterada! Confira as novas informações 
 			de acesso:<br><br>Nome de usuário: $emailDest<br>Senha: $this->novasenha
 			<br><br>Atenciosamente,<br>Life Triagem de Fotos.");
@@ -89,8 +82,8 @@ class AlterarSenha{
 
 }
 
-$as = new AlterarSenha;
-$as->setId($_POST["idcli"]);
+$as = new AlterarSenhaAdmin;
+$as->setId($_POST["idadmin"]);
 $as->setSenha($_POST["oldpass"]);
 $as->setNovaSenha($_POST["renewpass"]);
 $as->gerarHash();
@@ -99,11 +92,11 @@ $as->verificaSenhaAntiga();
 if(strcmp($as->getTempHash(), $as->getHash()) == 0){
 	$as->gerarNovoHash();
 	$as->atualizarSenha();
-	$as->enviarEmail();
-	header("Location: ../alterar_senha_sucesso.html");
+	//$as->enviarEmail();
+	header("Location: ../alterar_senha_admin_sucesso.html");
 }
 else{
-	header("Location: ../alterar_senha_erro.php");
+	header("Location: ../alterar_senha_admin_erro.php");
 }
 
 ?>
