@@ -9,8 +9,8 @@ BEGIN
 
     SELECT email INTO teste FROM admin WHERE app_email = email;
     IF teste IS NULL THEN
-        INSERT INTO cliente (nome, email, senha, evento, descricao, acesso, data_cadastro, capa)
-          VALUES (app_nome, app_email, app_senha, app_evento, app_descricao, 1, curdate(), 'none');
+        INSERT INTO cliente (nome, email, senha, evento, descricao, acesso, data_cadastro, capa, tutorial)
+          VALUES (app_nome, app_email, app_senha, app_evento, app_descricao, 1, curdate(), 'none', 1);
  
 		SELECT id into novo_id
         FROM cliente
@@ -20,7 +20,7 @@ BEGIN
 			values (novo_id,0,0,0,0,0,0,0);
 
 
-        SELECT id, nome, email, evento, descricao, acesso, data_cadastro, capa
+        SELECT id, nome, email, evento, descricao, acesso, data_cadastro, capa, tutorial
         FROM cliente
         WHERE app_email = email;
     END IF;
@@ -52,7 +52,7 @@ BEGIN
     
     SELECT email INTO teste FROM admin WHERE app_email = email;
     IF teste IS NULL THEN    
-        SELECT id, nome, email, acesso, data_cadastro
+        SELECT id, nome, email, acesso, data_cadastro, tutorial
         FROM cliente
         WHERE app_email = email AND app_senha = senha;
     ELSE SELECT id, email FROM admin WHERE app_email = email AND app_senha = senha;

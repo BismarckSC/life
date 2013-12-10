@@ -42,7 +42,7 @@
     </head>
     <body>
     	<div class="codrops-top">
-            <a href="">
+            <a href="cliente.php">
                 <strong>Inicio</strong>
             </a>
             <span class="right">

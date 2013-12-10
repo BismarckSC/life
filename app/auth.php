@@ -47,7 +47,11 @@ if ($email == "admin") {
 			session_start();
 			$_SESSION["user_id"] = $rst["id"];
 			$_SESSION["user_nome"] = $rst["nome"];
-			header("Location:../cliente.php");
+			if($rst["tutorial"] == 1){
+				header("Location:../instrucoes.php");
+			} else{
+				header("Location:../cliente.php");
+			}
 		} else{
 			header("Location:../bloqueado.html");
 		}

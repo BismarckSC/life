@@ -21,6 +21,7 @@ descricao VARCHAR(1000) NOT NULL,
 acesso INT(1) NOT NULL DEFAULT 1,
 data_cadastro DATE NOT NULL,
 capa VARCHAR(120) INT NOT NULL,
+tutorial INT NOT NULL,
 PRIMARY KEY(id));
 
 CREATE TABLE pasta(
