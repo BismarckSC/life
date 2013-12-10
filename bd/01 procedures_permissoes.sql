@@ -1,16 +1,17 @@
 DELIMITER |
-CREATE PROCEDURE cadastro_cliente(app_nome VARCHAR(60), app_email VARCHAR(50),  
-  app_senha VARCHAR(32), app_evento VARCHAR(100), app_descricao VARCHAR(1000), app_n_fotos INT)
+CREATE PROCEDURE cadastro_cliente(app_nome VARCHAR(30), app_email VARCHAR(50),  
+
+  app_senha VARCHAR(32), app_evento VARCHAR(100), app_descricao VARCHAR(1000))
 
 BEGIN
     DECLARE teste VARCHAR(20);
 
     SELECT email INTO teste FROM admin WHERE app_email = email;
     IF teste IS NULL THEN
-        INSERT INTO cliente (nome, email, senha, evento, descricao, acesso, data_cadastro, n_fotos_contrato)
-          VALUES (app_nome, app_email, app_senha, app_evento, app_descricao, 1, curdate(), app_n_fotos);
+        INSERT INTO cliente (nome, email, senha, evento, descricao, acesso, data_cadastro, capa)
+          VALUES (app_nome, app_email, app_senha, app_evento, app_descricao, 1, curdate(), 'none');
  
-        SELECT id, nome, email, evento, descricao, acesso, data_cadastro, n_fotos_contrato
+        SELECT id, nome, email, evento, descricao, acesso, data_cadastro, capa
         FROM cliente
         WHERE app_email = email;
     END IF;
@@ -99,9 +100,33 @@ BEGIN
         
         IF sel = 0 THEN
             UPDATE fotos SET excluida = 1 WHERE id = tempid;
-        ELSE
-            UPDATE fotos SET selecionada = 0 WHERE id = tempid;
         END IF;
+
+
+    END LOOP;
+
+    CLOSE cur;
+END
+
+|
+
+CREATE PROCEDURE reseta_triagem(app_id_cliente int)
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE tempid INT;
+    DECLARE cur CURSOR FOR SELECT f.id FROM cliente_pasta c, pasta_fotos p, fotos f WHERE app_id_cliente = c.id_cliente AND c.id_pasta = p.id_pasta AND p.id_foto = f.id;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+
+    read_loop: LOOP
+        FETCH cur INTO tempid;
+        
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+        
+		UPDATE fotos SET excluida = 0 WHERE id = tempid;
 
     END LOOP;
 
