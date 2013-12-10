@@ -5,12 +5,21 @@ CREATE PROCEDURE cadastro_cliente(app_nome VARCHAR(30), app_email VARCHAR(50),
 
 BEGIN
     DECLARE teste VARCHAR(20);
+	declare novo_id int;
 
     SELECT email INTO teste FROM admin WHERE app_email = email;
     IF teste IS NULL THEN
         INSERT INTO cliente (nome, email, senha, evento, descricao, acesso, data_cadastro, capa)
           VALUES (app_nome, app_email, app_senha, app_evento, app_descricao, 1, curdate(), 'none');
  
+		SELECT id into novo_id
+        FROM cliente
+        WHERE app_email = email;
+
+		insert into dias (id,d60,d30,d20,d10,d05,d01,d00) 
+			values (novo_id,0,0,0,0,0,0,0);
+
+
         SELECT id, nome, email, evento, descricao, acesso, data_cadastro, capa
         FROM cliente
         WHERE app_email = email;

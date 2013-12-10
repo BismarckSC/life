@@ -14,7 +14,6 @@ class CriarAlbum {
 	protected $senha;
 	protected $hash;
 	protected $evento;
-	protected $numfotos;
 	protected $descricao;
 	
 	public function setnome($nome) {
@@ -27,10 +26,6 @@ class CriarAlbum {
 	
 	public function setevento($evento) {
 		$this->evento = $evento;
-	}
-
-	public function setnumfotos($fotos){
-		$this->numfotos = $fotos;
 	}
 	
 	public function setdescricao($descricao) {
@@ -66,7 +61,7 @@ class CriarAlbum {
 
 		$con->criar();
 		$con->selecionar();
-		$id = $con->cadalbum($this->nome,$this->email,$this->hash,$this->evento,$this->descricao,$this->numfotos);
+		$id = $con->cadalbum($this->nome,$this->email,$this->hash,$this->evento,$this->descricao);
 		$con->fechar();
 		
 		session_start();
@@ -93,7 +88,6 @@ $ca = new CriarAlbum;
 $ca->setnome($_POST["txtnome"]);
 $ca->setemail($_POST["txtemail"]);
 $ca->setevento($_POST["txtevento"]);
-$ca->setnumfotos($_POST["numfotos"]);
 $ca->setdescricao($_POST["txtdesc"]);
 $ca->criar();
 $ca->enviarEmail();

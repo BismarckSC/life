@@ -32,8 +32,8 @@ class Conexao {
 		return mysql_fetch_array($this->rs);
 	}
 	
-	public function cadalbum($nome,$email,$senha,$evento,$descricao, $numfotos) {
-		$consulta = "CALL cadastro_cliente('$nome','$email','$senha','$evento','$descricao','$numfotos');";
+	public function cadalbum($nome,$email,$senha,$evento,$descricao) {
+		$consulta = "CALL cadastro_cliente('$nome','$email','$senha','$evento','$descricao');";
 		$rs = mysql_query($consulta, $this->con);
 		$rst = mysql_fetch_array($rs);
 		$id = $rst["id"];
