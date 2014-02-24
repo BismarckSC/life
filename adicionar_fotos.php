@@ -63,7 +63,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-vindo <strong>ADMINISTRADOR</strong>! <a href="app/logout.php">sair</a>
+            	<strong style="font-weight: bold;">Seja Bem-vindo ADMINISTRADOR!</strong> <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>

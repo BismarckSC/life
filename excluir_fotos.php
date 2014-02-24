@@ -80,7 +80,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo(a) <strong>Adminstrador</strong>! <a href="">sair</a>
+            	<strong style="font-weight: bold;">Seja Bem-Vindo(a) Adminstrador!</strong> <a href="">sair</a>
             </span>
             <div class="clr"></div>
         </div>

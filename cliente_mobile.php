@@ -56,7 +56,7 @@
     </head>
     <body>
     	<div class="well">
-            Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>!|<a href="app/logout.php">sair</a>
+            <strong style="font-weight: bold;">Seja Bem-Vindo(a) <?php echo $nome; ?>!</strong>|<a href="app/logout.php">sair</a>
         </div>
         
         <div class="container" align="center">

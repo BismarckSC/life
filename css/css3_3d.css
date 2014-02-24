@@ -73,6 +73,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	-webkit-transition: all 0.15s ease-in;
+	cursor: pointer;
 }
 
 #grid .details a.more:hover { background-color: #0090e2; color: #fff; }
@@ -95,6 +96,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	-webkit-transition: all 0.15s ease-in;
+	cursor: pointer;
 }
 
 #grid .details1 a.more:hover { background-color: #0090e2; color: #fff; }
@@ -117,6 +119,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.6);
 	-webkit-transition: all 0.15s ease-in;
+	cursor: pointer;
 }
 
 #grid .details2 a.more:hover { background-color: #0090e2; color: #fff; }

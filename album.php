@@ -103,7 +103,7 @@
                 <strong>Inicio</strong>
             </a>
             <span class="right">
-            	Seja Bem-Vindo(a) <strong><?php echo $nome; ?></strong>! <a href="app/logout.php">sair</a>
+            	<strong style="font-weight: bold;">Seja Bem-Vindo(a) <?php echo $nome; ?>!</strong> <a href="app/logout.php">sair</a>
             </span>
             <div class="clr"></div>
         </div>
@@ -133,7 +133,8 @@
 					if($rst['selecionada'] == 0) {
 				?>
 		            <div class="details" id="div<?php echo $rst['id'] ?>">
-		            	<h3><?php echo $rst['nome']; ?></h3>
+		            	<!-- <h3><?php echo $rst['nome']; ?></h3> -->
+		            	</br>
 		                <a class="more" id="mar<?php echo $rst['id'] ?>" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
 		                <a class="more" id="desmar<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 		            </div>
@@ -141,7 +142,8 @@
 					} else {
 				?>
 					<div class="details1" id="div<?php echo $rst['id'] ?>">
-		            	<h3><?php echo $rst['nome']; ?></h3>
+		            	<!-- <h3><?php echo $rst['nome']; ?></h3> -->
+		            	</br>
 		            	<a class="more" id="mar<?php echo $rst['id'] ?>" style="display:none;" onclick="SubmitForm(<?php echo $rst['id'] ?>)">marcar</a>
 		                <a class="more" id="desmar<?php echo $rst['id'] ?>" onclick="SubmitForm2(<?php echo $rst['id'] ?>)">desmarcar</a>
 		            </div>
