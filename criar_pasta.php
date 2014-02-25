@@ -93,7 +93,7 @@
 			?>
     				<tr>
     				<!--<form class="form-horizontal" role="form">-->
-					<td class="span2"><?php echo $rst["nome"]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td>
+					<td class="span2"><?php $name = explode("-", $rst["nome"], 2); echo $name[1]; ?></td><td><a href="adicionar_fotos.php?id=<?php echo $rst['id']; ?>" class="btn btn-small">Adicionar Fotos</a></td>
 					<!--</form>-->
 					</tr>
 			

@@ -113,7 +113,7 @@
 ?>
 				<li>
 		            <div class="details">
-		            	<h3><?php echo $rst["nome"]; ?></h3>
+		            	<h3><?php $name = explode("-", $rst["nome"], 2); echo $name[1]; ?></h3>
 		            </div>
 		           <a class="more" href="album.php?id=<?php echo $rst['id']; ?>&nome=<?php echo $rst['nome']; ?>&pag=1"><img src="uploads/<?php echo $id; ?>/<?php echo $rst["nome"]; ?>/<?php echo $rst_con3["nome"]; ?>" width="290px"/></a>
 		        </li>

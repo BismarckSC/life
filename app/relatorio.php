@@ -52,7 +52,8 @@ class Relatorio{
         for($i = 0; $i < $qtde; $i++) {
             $rst = $con->proxima();
 			//write
-			$data = "Pasta: ".$rst["npasta"]."\t\tFoto: ".$rst["nome"]."\n";
+			$name = explode("-", $rst["npasta"], 2);
+			$data = "Pasta: ".$name[1]."\t\tFoto: ".$rst["nome"]."\n";
 			fwrite($handle, $data);
 		}
 

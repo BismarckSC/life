@@ -81,8 +81,9 @@ class AlterarSenha{
 		$email->setDestino($emailDest);
 		$email->setAssunto("Life Triagem de Fotos - senha alterada");
 		$email->setMensagem("Prezado(a) $nomeDest,<br><br>A senha de sua conta em 
-			http://triagem.eventoslife.com.br foi alterada! Confira as novas informações 
-			de acesso:<br><br>Nome de usuário: $emailDest<br>Senha: $this->novasenha
+			<a href=\"http://triagem.eventoslife.com.br\">http://triagem.eventoslife.com.br</a>
+			foi alterada! Confira as novas informações de acesso:<br><br>
+			Nome de usuário: $emailDest<br>Senha: $this->novasenha
 			<br><br>Atenciosamente,<br>Life Triagem de Fotos.");
 		$email->enviarMensagem();
 	}

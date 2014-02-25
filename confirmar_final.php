@@ -101,7 +101,7 @@
             Você selecionou <?php echo $fotos_selecionadas; ?> fotos.<br>
             É aconselhável que o número de fotos escolhidas<br>
             fique entre 80 e 120 fotos.</span></h2>
-            <br><br>
+            </br></br>
         </div>
         <div class="container">
         	<a href="finalizar_triagem.php?id=<?php echo $id; ?>&nome=<?php echo $nome; ?>" class="btn btn-default">Continuar</a>

@@ -93,7 +93,7 @@
 
         <div id="container">
             <h2 class="title"><span>Sistema de Triagem de Fotos</span></h2>
-    		<h2 class="title"><span>Excluir fotos da pasta "<?php echo $album; ?>"</span></h2>
+    		<h2 class="title"><span>Excluir fotos da pasta "<?php $name = explode("-", $album, 2); echo $name[1]; ?>"</span></h2>
     		<!--<br>
     		Pagina <?php echo $pagina; ?> de <?php echo $totalpaginas + 1; ?> -->
     	</div>

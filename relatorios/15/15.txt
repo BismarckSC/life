@@ -1,0 +1,9 @@
+**RELATÓRIO DE TRIAGEM DE FOTOS**
+
+Cliente: Ariana
+
+Pasta: Bolo		Foto: 1.jpg
+Pasta: Bolo		Foto: 5.jpg
+Pasta: Bolo		Foto: 4.jpg
+Pasta: Torta		Foto: 15.jpg
+Pasta: Torta		Foto: 16.jpg

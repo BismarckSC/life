@@ -67,7 +67,7 @@
         </div>
 
         <div id="container">
-            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir pasta "<?php echo $rst['nome']; ?>"?</span></h2>
+            <h2 class="title"><span>Sistema de Triagem de Fotos<br>Excluir pasta "<?php $name = explode("-", $rst['nome'], 2); echo $name[1]; ?>"?</span></h2>
             <br><br>
         </div>
 		
