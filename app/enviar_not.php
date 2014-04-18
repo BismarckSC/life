@@ -1,3 +1,4 @@
+#!/usr/local/bin/php -q
 <?php
 
 include 'conexao.php';
@@ -175,7 +176,7 @@ class CriarAlbum {
 			$email->setDestino($rst["email"]);
 			$email->setAssunto("Life Triagem de Fotos!");
 			$email->setMensagem("Prezado(a) ".$rst["nome"].",<br><br>
-				Informamos que você tem o prazo de ".$prazo." dias para concluir
+				Informamos que você tem o prazo de ".$prazo." dia para concluir
 				a sua triagem de fotos, fique atento.
 				<br><br>Atenciosamente,<br>Life Triagem de Fotos.
 				<br>http://triagem.eventoslife.com.br");

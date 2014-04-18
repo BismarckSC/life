@@ -36,12 +36,12 @@ class MailSender {
         $mail->IsHTML(true);
         $mail->CharSet = "utf-8";
         $mail->SMTPSecure = "tls";
-        $mail->Host = "smtp.gmail.com";
+        $mail->Host = "mail.eventoslife.com.br";
         $mail->Port = "587";
         $mail->SMTPAuth = "true";
-        $mail->Username = "testetriagemlife@gmail.com";
-        $mail->Password = "senhaaaa";
-        $mail->From = "testetriagemlife@gmail.com";
+        $mail->Username = "triagem@eventoslife.com.br";
+        $mail->Password = "8T2cuzRW";
+        $mail->From = "triagem@eventoslife.com.br";
         $mail->FromName = "Life";
         $mail->AddAddress($this->destino);
         $mail->Subject = $this->assunto;
